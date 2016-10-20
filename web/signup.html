@@ -1,0 +1,33 @@
+<!-- we only use html snippets with angular. this gets injected in the div view in index.html -->
+<!-- ng-model allows us to bind data to javascript variables in the backend! -->
+<div>
+    <!-- first name -->
+    <div class="form-group row">
+        <label for="firstName" class="col-xs-2 col-form-label">First Name</label>
+        <div class="col-xs-10">
+            <input class="form-control" type="text" value="Artisanal kale" id="firstName" ng-model="firstName">
+        </div>
+    </div>
+
+    <!-- last name -->
+    <div class="form-group row">
+        <label for="lastName" class="col-xs-2 col-form-label">Last Name</label>
+        <div class="col-xs-10">
+            <input class="form-control" type="text" value="How do I shoot web" id="lastName" ng-model="lastName">
+        </div>
+    </div>
+
+    <!-- email -->
+    <div class="form-group row">
+        <label for="email" class="col-xs-2 col-form-label">Email</label>
+        <div class="col-xs-10">
+            <input class="form-control" type="text"  id="email" ng-model="emailAddress">
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" ng-click="registerUser()">Register</button>
+
+    <h1>
+        {{response}}
+    </h1>
+</div>

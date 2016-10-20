@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="BurdenBidder">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <!-- Angular files -->
+    <script src="js/angular/angular.js"></script>
+    <script src="js/angular/route.js"></script>
+    <script src="js/angular/jquery.js"></script>
+    <script src="js/angular/bootstrap.js"></script>
+
+
+    <!-- Controllers -->
+    <script src="js/controllers/index.js"></script>
+    <script src="js/controllers/signUpController.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.css"/>
 </head>
 <body>
+
+
+<!-- this is where we inject pages! -->
+<div ng-view>
+
+</div>
 
 </body>
 </html>
