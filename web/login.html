@@ -1,0 +1,22 @@
+<!-- we only use html snippets with angular. this gets injected in the div view in index.html -->
+<!-- ng-model allows us to bind data to javascript variables in the backend! -->
+<div>
+    <!-- email -->
+    <div class="form-group row">
+        <label for="email" class="col-xs-2 col-form-label">Email</label>
+        <div class="col-xs-10">
+            <input class="form-control" type="password"  id="email" ng-model="emailAddress">
+        </div>
+    </div>s
+    <!-- password -->
+    <div class="form-group row">
+        <label for="password" class="col-xs-2 col-form-label">Password</label>
+        <div class="col-xs-10">
+            <input class="form-control" type="text" id="password" ng-model="password">
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" ng-click="login()">Login</button>
+    <br>
+    <button type="submit" class="btn btn-primary" ng-click='go()'>Register new account</button>
+</div>

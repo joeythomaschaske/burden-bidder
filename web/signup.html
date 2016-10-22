@@ -5,7 +5,7 @@
     <div class="form-group row">
         <label for="firstName" class="col-xs-2 col-form-label">First Name</label>
         <div class="col-xs-10">
-            <input class="form-control" type="text" value="Artisanal kale" id="firstName" ng-model="firstName">
+            <input class="form-control" type="text" value="" id="firstName" ng-model="firstName">
         </div>
     </div>
 
@@ -13,7 +13,7 @@
     <div class="form-group row">
         <label for="lastName" class="col-xs-2 col-form-label">Last Name</label>
         <div class="col-xs-10">
-            <input class="form-control" type="text" value="How do I shoot web" id="lastName" ng-model="lastName">
+            <input class="form-control" type="text" value="" id="lastName" ng-model="lastName">
         </div>
     </div>
 
@@ -25,9 +25,61 @@
         </div>
     </div>
 
-    <button type="submit" class="btn btn-primary" ng-click="registerUser()">Register</button>
+    <!-- password -->
+    <div class="form-group row">
+        <label for="password" class="col-xs-2 col-form-label">Password</label>
+        <div class="col-xs-10">
+            <input class="form-control" type="text"  id="password" ng-model="password">
+        </div>
+    </div>
 
-    <h1>
-        {{response}}
-    </h1>
+    <!-- dateOfBirth -->
+    <div class="form-group row">
+        <label for="dateOfBirth" class="col-xs-2 col-form-label">Date of Birth</label>
+        <div class="col-xs-10">
+            <input class="form-control" type="text"  id="dateOfBirth" ng-model="dateOfBirth">
+        </div>
+    </div>
+
+    <!-- phoneNo -->
+    <div class="form-group row">
+        <label for="phoneNo" class="col-xs-2 col-form-label">Phone Number</label>
+        <div class="col-xs-10">
+            <input class="form-control" type="text"  id="phoneNo" ng-model="phoneNo">
+        </div>
+    </div>
+
+    <!-- street -->
+    <div class="form-group row">
+        <label for="street" class="col-xs-2 col-form-label">Street</label>
+        <div class="col-xs-10">
+            <input class="form-control" type="text"  id="street" ng-model="street">
+        </div>
+    </div>
+
+    <!-- city -->
+    <div class="form-group row">
+        <label for="city" class="col-xs-2 col-form-label">City</label>
+        <div class="col-xs-10">
+            <input class="form-control" type="text"  id="city" ng-model="city">
+        </div>
+    </div>
+
+    <!-- state -->
+    <div class="form-group row">
+        <label for="stateCode" class="col-xs-2 col-form-label">State</label>
+        <div class="col-xs-10">
+            <input class="form-control" type="text"  id="stateCode" ng-model="stateCode">
+        </div>
+    </div>
+
+    <!-- state -->
+    <div class="form-group row">
+        <label for="zipCode" class="col-xs-2 col-form-label">Zip Code</label>
+        <div class="col-xs-10">
+            <input class="form-control" type="text"  id="zipCode" ng-model="zipCode">
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" ng-click="registerUser()">Register</button>
 </div>

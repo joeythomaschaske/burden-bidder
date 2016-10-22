@@ -10,8 +10,12 @@ burdenBidderApp.config(function($routeProvider, $httpProvider) {
 
     $routeProvider
     .when('/', {
-        templateUrl : 'signUp.html',
-        controller  : 'signUpController'
+        templateUrl : 'login.html',
+        controller  : 'loginController'
+    })
+    .when('/signup', {
+        templateUrl : 'signup.html',
+        controller : 'signUpController'
     })
 
 });
