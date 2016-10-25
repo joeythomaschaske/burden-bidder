@@ -22,7 +22,6 @@ burdenBidderApp.controller('loginController', function($scope, $http, $location)
         }).then(function successCallback(response) {
             console.log(response.data.message);
             $scope.response = response.data.message;
-            $location()
         }, function errorCallback(response) {
             console.log('error');
             // called asynchronously if an error occurs
