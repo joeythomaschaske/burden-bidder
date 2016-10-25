@@ -9,12 +9,14 @@
     <script src="js/angular/route.js"></script>
     <script src="js/angular/jquery.js"></script>
     <script src="js/angular/bootstrap.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase.js"></script>
 
 
     <!-- Controllers -->
     <script src="js/controllers/index.js"></script>
     <script src="js/controllers/signUpController.js"></script>
     <script src="js/controllers/loginController.js"></script>
+    <script src="js/controllers/landingController.js"></script>
 
     <link rel="stylesheet" href="css/bootstrap.css"/>
 </head>
@@ -27,4 +29,16 @@
 </div>
 
 </body>
+
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyBSwhTwVCy7bgUFQyYYeE9ymGp9kwzr3nU",
+        authDomain: "burdenbidderbackend.firebaseapp.com",
+        databaseURL: "https://burdenbidderbackend.firebaseio.com",
+        storageBucket: "burdenbidderbackend.appspot.com",
+        messagingSenderId: "28712062068"
+    };
+    firebase.initializeApp(config);
+</script>
 </html>
