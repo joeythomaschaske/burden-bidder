@@ -1,4 +1,4 @@
-burdenBidderApp.controller('signUpController', function($scope, $http, $location, UserService) {
+burdenBidderApp.controller('signUpController', function($scope, $http, $location, UserService, $rootScope) {
     //scope are out variables that we use to communicate with the html
     $scope.formOne = true;
     $scope.errors = false;
@@ -48,18 +48,17 @@ burdenBidderApp.controller('signUpController', function($scope, $http, $location
     //these are functions that we can use in our html
 
     function register() {
-        try {
-            firebase.auth().createUserWithEmailAndPassword($scope.email, $scope.password)
-                .then(function (user) {
-                    console.log(user);
-                    UserService.setUser(user);
-                })
-                .catch(function (error) {
-                    $scope.message = error.message;
-                    alert($scope.message);
-                });
-        } catch(exception){
-            console.log(exception);
-        }
+        firebase.auth().createUserWithEmailAndPassword($scope.email, $scope.password)
+        .then(function (user) {
+            console.log(user);
+            UserService.setUser(user);
+            $rootScope.$apply(function() {
+                $location.path('/home');
+            });
+        })
+        .catch(function (error) {
+            $scope.message = error.message;
+            alert($scope.message);
+        });
     }
 });

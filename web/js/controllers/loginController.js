@@ -1,36 +1,34 @@
-burdenBidderApp.controller('loginController', function($scope, $http, $location) {
-    console.log('The controller works');
+burdenBidderApp.controller('loginController', function($scope, $http, $location, UserService, $rootScope) {
     //scope are out variables that we use to communicate with the html
-    $scope.emailAddress;
+    $scope.email;
     $scope.password;
+
+    $scope.errors = false;
+    $scope.message;
 
     //these are functions that we can use in our html
     $scope.login = function() {
+        if(!email || !password) {
+            $scope.message = 'All fields are required';
+            $scope.errors = true;
+        } else {
+            firebase.auth().signInWithEmailAndPassword($scope.email, $scope.password)
+            .then(function(user){
+                UserService.setUser(user);
+                $rootScope.$apply(function() {
+                    $location.path('/home');
+                });
+            })
+            .catch(function(error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                $rootScope.$apply(function() {
+                    $scope.message = errorMessage;
+                    $scope.errors = true;
+                });
+            });
 
-        //this is a json object we pass to the backend
-        var data = {
-            emailAddress : $scope.emailAddress,
-            password : $scope.password
-        };
-        //this is how we pass data to the backend
-        //use post to update the database
-        //use get to retrieve stuff from the database with no updates neccesarry idk how to fucking spell that word
-        $http({
-            method: 'POST',
-            url: 'https://burdenbidderbacken.herokuapp.com/login',
-            data: data
-        }).then(function successCallback(response) {
-            console.log(response.data.message);
-            $scope.response = response.data.message;
-        }, function errorCallback(response) {
-            console.log('error');
-            // called asynchronously if an error occurs
-            // or server returns response with an error status.
-        });
-
+        }
     };
-    $scope.go = function() {
-        $location.path('/signup') ;
-    }
-
 });
