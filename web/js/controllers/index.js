@@ -20,6 +20,9 @@ burdenBidderApp.config(function($routeProvider, $httpProvider) {
     .when('/login', {
         templateUrl : 'login.html',
         controller : 'loginController'
+    })
+    .when('/home', {
+        //homepage
     });
 
 });

@@ -1,4 +1,4 @@
-burdenBidderApp.controller('signUpController', function($scope, $http, $location) {
+burdenBidderApp.controller('signUpController', function($scope, $http, $location, UserService) {
     //scope are out variables that we use to communicate with the html
     $scope.formOne = true;
     $scope.errors = false;
@@ -48,48 +48,18 @@ burdenBidderApp.controller('signUpController', function($scope, $http, $location
     //these are functions that we can use in our html
 
     function register() {
-        firebase.auth().createUserWithEmailAndPassword($scope.email, $scope.password)
-        .catch(function(error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-        });
+        try {
+            firebase.auth().createUserWithEmailAndPassword($scope.email, $scope.password)
+                .then(function (user) {
+                    console.log(user);
+                    UserService.setUser(user);
+                })
+                .catch(function (error) {
+                    $scope.message = error.message;
+                    alert($scope.message);
+                });
+        } catch(exception){
+            console.log(exception);
+        }
     }
-    $scope.registerUser = function() {
-        //this is a json object we pass to the backend
-        var data = {
-            email : $scope.emailAddress,
-            password : $scope.password,
-            firstName : $scope.firstName,
-            lastName : $scope.lastName,
-            dateOfBirth : $scope.dateOfBirth,
-            taskBidder : $scope.taskBidder,
-            phoneNo : $scope.phoneNo,
-            Address : {
-                street : $scope.street,
-                city : $scope.city,
-                stateCode : $scope.stateCode,
-                zipCode : $scope.zipCode
-            }
-        };
-
-        //this is how we pass data to the backend
-        //use post to update the database
-        //use get to retrieve stuff from the database with no updates neccesarry idk how to fucking spell that word
-        $http({
-            method: 'POST',
-            url: 'http://localhost:8080/signup',
-            data: data
-        })
-        .then(function successCallback(response) {
-            console.log(response.data.message);
-            $scope.response = response.data.message;
-        },
-        function errorCallback(response) {
-            console.log('error');
-            // called asynchronously if an error occurs
-            // or server returns response with an error status.
-        })
-        ;
-    };
 });
