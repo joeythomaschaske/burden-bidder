@@ -50,8 +50,9 @@ burdenBidderApp.controller('signUpController', function($scope, $http, $location
     function register() {
         try {
             firebase.auth().createUserWithEmailAndPassword($scope.email, $scope.password)
-                .then(function (success) {
-                    console.log(success);
+                .then(function (user) {
+                    console.log(user);
+                    UserService.setUser(user);
                 })
                 .catch(function (error) {
                     $scope.message = error.message;
