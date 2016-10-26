@@ -1,85 +1,244 @@
-<!-- we only use html snippets with angular. this gets injected in the div view in index.html -->
-<!-- ng-model allows us to bind data to javascript variables in the backend! -->
-<div>
-    <!-- first name -->
-    <div class="form-group row">
-        <label for="firstName" class="col-xs-2 col-form-label">First Name</label>
-        <div class="col-xs-10">
-            <input class="form-control" type="text" value="" id="firstName" ng-model="firstName">
+<style>
+    /*
+/* Created by Filipe Pina
+ * Specific styles of signin, register, component
+ */
+    /*
+     * General styles
+     */
+
+    .intro-header{
+        padding-top: 0px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+        padding-bottom: 100px;
+        text-align: center;
+        color: #f8f8f8;
+        background: url(img/intro-bg.jpg);
+        background-size: cover;
+    }
+
+    .main{
+        margin-top: 0px;
+    }
+
+    h1.title {
+        font-size: 50px;
+        font-family: 'Passion One';
+        font-weight: 400;
+    }
+
+    hr{
+        width: 10%;
+        color: #fff;
+    }
+
+    .form-group{
+        margin-bottom: 15px;
+    }
+
+    label{
+        margin-bottom: 15px;
+    }
+
+    input,
+    input::-webkit-input-placeholder {
+        font-size: 11px;
+        padding-top: 3px;
+    }
+
+    .main-login{
+        background-color: #5e9791;
+        opacity: .9;
+        /* shadows and rounded borders */
+        -moz-border-radius: 2px;
+        -webkit-border-radius: 2px;
+        border-radius: 2px;
+        -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+
+    }
+
+    .main-center{
+        margin-top: 0px;
+        margin: 0 auto;
+        max-width: 330px;
+        padding: 40px 40px;
+
+    }
+
+    .login-button{
+        margin-top: 5px;
+    }
+
+    .login-register{
+        font-size: 11px;
+        text-align: center;
+    }
+
+</style>
+<!-- form one -->
+<div class="intro-header" ng-show="formOne">
+    <div class="row main">
+        <div class="panel-heading">
+            <div class="panel-title text-center">
+                <h1 class="title">Burden Bidder</h1>
+                <hr />
+            </div>
+        </div>
+        <div class="main-login main-center">
+            <form class="form-horizontal">
+
+                <div class="alert alert-danger" role="alert" ng-show="errors">
+                    <span class="sr-only">Error:</span>
+                    {{message}}
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <label for="firstName">First Name</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" ng-model="firstName" id="firstName" placeholder="Enter your First Name"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <label for="lastName">Last Name</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" id="lastName" ng-model="lastName" placeholder="Enter your Last Name"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <label for="email">Email</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" id="email" ng-model="email" placeholder="Enter your Email"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <label for="password">Password</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control" id="password" ng-model="password" placeholder="Enter your Password"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <label for="confirm">Confirm Password</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control" ng-model="confirmPass" id="confirm" placeholder="Confirm your Password"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <label for="terms">Terms & Conditions</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">I agree to the terms and conditions</span>
+                            <input type="checkbox" class="form-control" ng-model="agreeToTerms" id="terms" placeholder="Confirm your Password"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <button ng-click="next()" type="button" class="btn btn-primary btn-lg btn-block login-button">Next</button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 
-    <!-- last name -->
-    <div class="form-group row">
-        <label for="lastName" class="col-xs-2 col-form-label">Last Name</label>
-        <div class="col-xs-10">
-            <input class="form-control" type="text" value="" id="lastName" ng-model="lastName">
+<!--form two -->
+<div class="intro-header" ng-show="!formOne">
+    <div class="row main">
+        <div class="panel-heading">
+            <div class="panel-title text-center">
+                <h1 class="title">Burden Bidder</h1>
+                <hr />
+            </div>
+        </div>
+        <div class="main-login main-center">
+            <form class="form-horizontal">
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <label for="birthday">Birthday</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" ng-model="dateOfBirth" id="birthday" placeholder="Enter your Birthday"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <label for="phone">Phone</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" id="phone" ng-model="phoneNo" placeholder="Enter your Phone Number"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <label for="street">Street</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" id="street" ng-model="street" placeholder="Enter your Street Address"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <label for="city">City</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control" id="city" ng-model="city" placeholder="Enter your City"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <label for="state">State</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control" ng-model="stateCode" id="state" placeholder="Enter your State"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cols-sm-10">
+                        <label for="zip">Postal Code</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control" ng-model="zip" id="zip" placeholder="Enter your Postal Code"/>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group ">
+                    <button ng-click="prev()" type="button" class="btn btn-primary btn-lg  login-button">Back</button>
+                    <button ng-click="finish()" type="button" class="btn btn-primary btn-lg  login-button">Finish</button>
+                </div>
+            </form>
         </div>
     </div>
-
-    <!-- email -->
-    <div class="form-group row">
-        <label for="email" class="col-xs-2 col-form-label">Email</label>
-        <div class="col-xs-10">
-            <input class="form-control" type="text"  id="email" ng-model="emailAddress">
-        </div>
-    </div>
-
-    <!-- password -->
-    <div class="form-group row">
-        <label for="password" class="col-xs-2 col-form-label">Password</label>
-        <div class="col-xs-10">
-            <input class="form-control" type="text"  id="password" ng-model="password">
-        </div>
-    </div>
-
-    <!-- dateOfBirth -->
-    <div class="form-group row">
-        <label for="dateOfBirth" class="col-xs-2 col-form-label">Date of Birth</label>
-        <div class="col-xs-10">
-            <input class="form-control" type="text"  id="dateOfBirth" ng-model="dateOfBirth">
-        </div>
-    </div>
-
-    <!-- phoneNo -->
-    <div class="form-group row">
-        <label for="phoneNo" class="col-xs-2 col-form-label">Phone Number</label>
-        <div class="col-xs-10">
-            <input class="form-control" type="text"  id="phoneNo" ng-model="phoneNo">
-        </div>
-    </div>
-
-    <!-- street -->
-    <div class="form-group row">
-        <label for="street" class="col-xs-2 col-form-label">Street</label>
-        <div class="col-xs-10">
-            <input class="form-control" type="text"  id="street" ng-model="street">
-        </div>
-    </div>
-
-    <!-- city -->
-    <div class="form-group row">
-        <label for="city" class="col-xs-2 col-form-label">City</label>
-        <div class="col-xs-10">
-            <input class="form-control" type="text"  id="city" ng-model="city">
-        </div>
-    </div>
-
-    <!-- state -->
-    <div class="form-group row">
-        <label for="stateCode" class="col-xs-2 col-form-label">State</label>
-        <div class="col-xs-10">
-            <input class="form-control" type="text"  id="stateCode" ng-model="stateCode">
-        </div>
-    </div>
-
-    <!-- state -->
-    <div class="form-group row">
-        <label for="zipCode" class="col-xs-2 col-form-label">Zip Code</label>
-        <div class="col-xs-10">
-            <input class="form-control" type="text"  id="zipCode" ng-model="zipCode">
-        </div>
-    </div>
-
-    <button type="submit" class="btn btn-primary" ng-click="registerUser()">Register</button>
 </div>
