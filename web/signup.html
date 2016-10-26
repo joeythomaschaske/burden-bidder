@@ -77,168 +77,173 @@
 
 </style>
 <!-- form one -->
-<div class="intro-header" ng-show="formOne">
-    <div class="row main">
-        <div class="panel-heading">
-            <div class="panel-title text-center">
-                <h1 class="title">Burden Bidder</h1>
-                <hr />
-            </div>
-        </div>
-        <div class="main-login main-center">
-            <form class="form-horizontal">
-
-                <div class="alert alert-danger" role="alert" ng-show="errors">
-                    <span class="sr-only">Error:</span>
-                    {{message}}
-                </div>
-
-                <div class="form-group">
-                    <div class="cols-sm-10">
-                        <label for="firstName">First Name</label>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" ng-model="firstName" id="firstName" placeholder="Enter your First Name"/>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="cols-sm-10">
-                        <label for="lastName">Last Name</label>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" id="lastName" ng-model="lastName" placeholder="Enter your Last Name"/>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="cols-sm-10">
-                        <label for="email">Email</label>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" id="email" ng-model="email" placeholder="Enter your Email"/>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="cols-sm-10">
-                        <label for="password">Password</label>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                            <input type="password" class="form-control" id="password" ng-model="password" placeholder="Enter your Password"/>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="cols-sm-10">
-                        <label for="confirm">Confirm Password</label>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                            <input type="password" class="form-control" ng-model="confirmPass" id="confirm" placeholder="Confirm your Password"/>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="cols-sm-10">
-                        <label for="terms">Terms & Conditions</label>
-                        <div class="input-group">
-                            <span class="input-group-addon">I agree to the terms and conditions</span>
-                            <input type="checkbox" class="form-control" ng-model="agreeToTerms" id="terms" placeholder="Confirm your Password"/>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group ">
-                    <button ng-click="next()" type="button" class="btn btn-primary btn-lg btn-block login-button">Next</button>
-                </div>
-            </form>
+<div class="intro-header">
+    <div class="row">
+        <div class="alert alert-danger" role="alert" ng-show="errors">
+            <span class="sr-only">Error:</span>
+            {{message}}
         </div>
     </div>
-</div>
+    <div ng-show="formOne">
+        <div class="row main">
+            <div class="panel-heading">
+                <div class="panel-title text-center">
+                    <h1 class="title">Burden Bidder</h1>
+                    <hr />
+                </div>
+            </div>
+            <div class="main-login main-center">
+                <form class="form-horizontal">
 
-<!--form two -->
-<div class="intro-header" ng-show="!formOne">
-    <div class="row main">
-        <div class="panel-heading">
-            <div class="panel-title text-center">
-                <h1 class="title">Burden Bidder</h1>
-                <hr />
+
+
+                    <div class="form-group">
+                        <div class="cols-sm-10">
+                            <label for="firstName">First Name</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" ng-model="firstName" id="firstName" placeholder="Enter your First Name"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="cols-sm-10">
+                            <label for="lastName">Last Name</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" id="lastName" ng-model="lastName" placeholder="Enter your Last Name"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="cols-sm-10">
+                            <label for="email">Email</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" id="email" ng-model="email" placeholder="Enter your Email"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="cols-sm-10">
+                            <label for="password">Password</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                <input type="password" class="form-control" id="password" ng-model="password" placeholder="Enter your Password"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="cols-sm-10">
+                            <label for="confirm">Confirm Password</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                <input type="password" class="form-control" ng-model="confirmPass" id="confirm" placeholder="Confirm your Password"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="cols-sm-10">
+                            <label for="terms">Terms & Conditions</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">I agree to the terms and conditions</span>
+                                <input type="checkbox" class="form-control" ng-model="agreeToTerms" id="terms" placeholder="Confirm your Password"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <button ng-click="next()" type="button" class="btn btn-primary btn-lg btn-block login-button">Next</button>
+                    </div>
+                </form>
             </div>
         </div>
-        <div class="main-login main-center">
-            <form class="form-horizontal">
+    </div>
 
-                <div class="form-group">
-                    <div class="cols-sm-10">
-                        <label for="birthday">Birthday</label>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" ng-model="dateOfBirth" id="birthday" placeholder="Enter your Birthday"/>
+    <!--form two -->
+    <div ng-show="!formOne">
+        <div class="row main">
+            <div class="panel-heading">
+                <div class="panel-title text-center">
+                    <h1 class="title">Burden Bidder</h1>
+                    <hr />
+                </div>
+            </div>
+            <div class="main-login main-center">
+                <form class="form-horizontal">
+
+                    <div class="form-group">
+                        <div class="cols-sm-10">
+                            <label for="birthday">Birthday</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" ng-model="dateOfBirth" id="birthday" placeholder="Enter your Birthday"/>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <div class="cols-sm-10">
-                        <label for="phone">Phone</label>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" id="phone" ng-model="phoneNo" placeholder="Enter your Phone Number"/>
+                    <div class="form-group">
+                        <div class="cols-sm-10">
+                            <label for="phone">Phone</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" id="phone" ng-model="phoneNo" placeholder="Enter your Phone Number"/>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <div class="cols-sm-10">
-                        <label for="street">Street</label>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" id="street" ng-model="street" placeholder="Enter your Street Address"/>
+                    <div class="form-group">
+                        <div class="cols-sm-10">
+                            <label for="street">Street</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" id="street" ng-model="street" placeholder="Enter your Street Address"/>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <div class="cols-sm-10">
-                        <label for="city">City</label>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                            <input type="password" class="form-control" id="city" ng-model="city" placeholder="Enter your City"/>
+                    <div class="form-group">
+                        <div class="cols-sm-10">
+                            <label for="city">City</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                <input type="password" class="form-control" id="city" ng-model="city" placeholder="Enter your City"/>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <div class="cols-sm-10">
-                        <label for="state">State</label>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                            <input type="password" class="form-control" ng-model="stateCode" id="state" placeholder="Enter your State"/>
+                    <div class="form-group">
+                        <div class="cols-sm-10">
+                            <label for="state">State</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                <input type="password" class="form-control" ng-model="stateCode" id="state" placeholder="Enter your State"/>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <div class="cols-sm-10">
-                        <label for="zip">Postal Code</label>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                            <input type="password" class="form-control" ng-model="zip" id="zip" placeholder="Enter your Postal Code"/>
+                    <div class="form-group">
+                        <div class="cols-sm-10">
+                            <label for="zip">Postal Code</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                <input type="password" class="form-control" ng-model="zip" id="zip" placeholder="Enter your Postal Code"/>
+                            </div>
                         </div>
                     </div>
-                </div>
 
 
-                <div class="form-group ">
-                    <button ng-click="prev()" type="button" class="btn btn-primary btn-lg  login-button">Back</button>
-                    <button ng-click="finish()" type="button" class="btn btn-primary btn-lg  login-button">Finish</button>
-                </div>
-            </form>
+                    <div class="form-group ">
+                        <button ng-click="prev()" type="button" class="btn btn-primary btn-lg  login-button">Back</button>
+                        <button ng-click="finish()" type="button" class="btn btn-primary btn-lg  login-button">Finish</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
