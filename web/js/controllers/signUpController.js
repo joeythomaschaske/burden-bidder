@@ -42,23 +42,49 @@ burdenBidderApp.controller('signUpController', function($scope, $http, $location
         } else {
             $scope.errors = false;
             register();
+            setTimeout(function(){
+                $rootScope.$apply(function() {
+                    $location.path('/home');
+                });
+            }, 2000);
         }
     };
-
-    //these are functions that we can use in our html
 
     function register() {
         firebase.auth().createUserWithEmailAndPassword($scope.email, $scope.password)
         .then(function (user) {
             console.log(user);
             UserService.setUser(user);
-            $rootScope.$apply(function() {
-                $location.path('/home');
-            });
+            createAccount();
         })
         .catch(function (error) {
             $scope.message = error.message;
             alert($scope.message);
+        });
+    }
+
+    function createAccount() {
+        var data = {
+            firstName : $scope.firstName,
+            lastName : $scope.lastName,
+            email : $scope.email,
+            dateOfBirth : $scope.dateOfBirth,
+            phoneNo : $scope.phoneNo,
+            street : $scope.street,
+            city : $scope.city,
+            stateCode: $scope.stateCode,
+            zip: $scope.zip,
+            userId: UserService.getUser().uid
+        };
+
+        $http({
+            method: 'POST',
+            url: 'http://localhost:8080/create',
+            data: data
+        }).then(function(response) {
+
+        }).catch(function(error){
+
         });
     }
 });
