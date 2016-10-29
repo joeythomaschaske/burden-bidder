@@ -28,6 +28,10 @@ burdenBidderApp.config(function($routeProvider, $httpProvider) {
     .when('/createTask', {
         templateUrl : 'createTask.html',
         controller : 'createTaskController'
+    })
+    .when('/account', {
+        templateUrl : 'account.html',
+        controller : 'accountController'
     });
 
 });
