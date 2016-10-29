@@ -709,51 +709,47 @@
                 <header>
                     <div class="col-md-7">
                         <h3>Burden Bidder</h3>
-                        <!-- search
-                        <nav class="navbar-default pull-left">
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvas" data-target="#side-menu" aria-expanded="false">
-                                    <span class="sr-only">Toggle navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                            </div>
-                        </nav>
-                        <div class="search hidden-xs hidden-sm">
-                            <input type="text" placeholder="Search" id="search">
-                        </div>
-                        -->
                     </div>
                     <div class="col-md-5">
                         <div class="header-rightside">
                             <ul class="list-inline header-top pull-right">
-                                <li class="hidden-xs"><a href="#/createTask" class="add-project" data-toggle="modal" data-target="#add_project">Create Task</a></li>
+                                <li class="hidden-xs"><a href="#/home" class="add-project" data-toggle="modal" data-target="#add_project">Home</a></li>
                             </ul>
                         </div>
                     </div>
                 </header>
             </div>
             <div class="user-dashboard">
-                <h1>Hello, JS</h1>
-                <div ng-repeat="task in tasks" class="row list-group-item">
-                    <div class="media col-md-3">
-                        <figure class="pull-left">
-                            <img class="media-object img-rounded img-responsive"  src="data:image/jpeg;base64, {{task.imageUpload}}" alt="placehold.it/350x250" >
-                        </figure>
+                <h1>Create a task</h1>
+                <div class="form">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title" placeholder="Title" ng-model="title">
                     </div>
-                    <div class="col-md-6">
-                        <h4 class="list-group-item-heading"> {{task.title}} </h4>
-                        <p class="list-group-item-text">
-                            {{task.decription}}
-                        </p>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" rows="3" id="description" ng-model="description"></textarea>
                     </div>
-                    <div class="col-md-3 text-center">
-                        <h2> {{task.openingPrice}} <small> Asking Price </small></h2>
-                        <h2> {{task.currentBid}} <small> Current Bid </small></h2>
-                        <button type="button" class="btn btn-default btn-lg btn-block"> Bid </button>
-                        <b> Category </b> <small>{{task.category}}</small>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select class="form-control" id="category" ng-model="category">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
                     </div>
+                    <div class="form-group">
+                        <label for="askingPrice">Asking Price</label>
+                        <input type="number" class="form-control"  id="askingPrice" ng-model="openingPrice">
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Image</label>
+                        <input id="image" type="file" id="fileupload" />
+                        <p class="help-block">Upload an image of the task you need help with.</p>
+                    </div>
+                    <button ng-click="createTask()" type="submit" class="btn btn-default">Create</button>
                 </div>
             </div>
         </div>

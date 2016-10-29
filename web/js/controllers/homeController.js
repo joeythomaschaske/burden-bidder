@@ -9,29 +9,7 @@ burdenBidderApp.controller('homeController', function($scope, $http, $location, 
         }
     });
 
-    var posts = [];
-
-
-    var data = {
-        title : 'Mow my lawn',
-        description : 'I need a strong man to mow my lawn.',
-        category : 'Lawn Care',
-        openingPrice : '50.00',
-        currentBid : '45.00',
-        taskCreatorId : UserService.getUser().uid
-    };
-
-    //uncomment this for creating tasks
-    // $http({
-    //     method: 'POST',
-    //     url: 'https://burdenbidderbacken.herokuapp.com/createTask',
-    //     data: data
-    // }).then(function(response) {
-    //     alert(response.message);
-    // }).catch(function(error){
-    //     alert(error.message);
-    // });
-
+    $scope.tasks = [];
 
     data = {
         userId : UserService.getUser().uid
@@ -40,13 +18,13 @@ burdenBidderApp.controller('homeController', function($scope, $http, $location, 
     //getting tasks
     $http({
         method: 'POST',
-        url: 'https://burdenbidderbacken.herokuapp.com/getAllTasks',
+        url: 'http://localhost:8080/getAllTasks',
         data : data
     }).then(function(response) {
+        $scope.tasks = response.data;
         console.log(response);
-        posts = response.data;
     }).catch(function(error){
-        alert(error.message);
+        console.log(error);
     });
 
 });
