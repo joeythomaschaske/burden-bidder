@@ -61,7 +61,7 @@ burdenBidderApp.controller('createTaskController', function($scope, $http, $loca
                 $rootScope.$apply(function() {
                     $location.path('/home');
                 });
-            }, 2000);
+            }, 3000);
         }).catch(function(error){
         });
 
