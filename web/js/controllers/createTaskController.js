@@ -9,12 +9,26 @@ burdenBidderApp.controller('createTaskController', function($scope, $http, $loca
         }
     });
 
+    $scope.errors = false;
+    $scope.message;
+
     $scope.title;
     $scope.description;
     $scope.category;
     $scope.openingPrice;
     $scope.imageUpload;
     $scope.imageData;
+
+    $scope.categories = [
+        {id: 0, name: '', value: 'empty'},
+        {id: 1, name: 'Delivery', value: 'Delivery'},
+        {id: 2, name: 'Cleaning', value: 'Cleaning'},
+        {id: 3, name: 'Heavy Lifting', value: 'Heavy Lifting'},
+        {id: 4, name: 'Errands', value: 'Errands'},
+        {id: 5, name: 'Pet Sitting', value: 'Pet Sitting'},
+        {id: 6, name: 'Computer Help', value: 'Computer Help'},
+        {id: 7, name: 'Furniture Assembly', value: 'Furniture Assembly'},
+    ]
 
     var handleFileSelect = function(evt) {
         var files = evt.target.files;
@@ -40,31 +54,38 @@ burdenBidderApp.controller('createTaskController', function($scope, $http, $loca
 
 
     $scope.createTask = function() {
-        var data = {
-            title : $scope.title,
-            description : $scope.description,
-            category :$scope.category,
-            openingPrice : $scope.openingPrice,
-            currentBid : $scope.openingPrice,
-            imageUpload : $scope.imageData,
-            taskCreatorId : UserService.getUser().uid
-        };
+        if(!$scope.title || !$scope.description || !$scope.category || !$scope.openingPrice ||
+            !$scope.imageData) {
+            $scope.errors = true;
+            $scope.message = 'All fields are required';
+        } else {
+            $scope.errors = false;
 
-        console.log(data);
+            var data = {
+                title : $scope.title,
+                description : $scope.description,
+                category :$scope.category,
+                openingPrice : $scope.openingPrice,
+                currentBid : $scope.openingPrice,
+                imageUpload : $scope.imageData,
+                taskCreatorId : UserService.getUser().uid
+            };
 
-        $http({
-            method: 'POST',
-            url: 'http://localhost:8080/createTask',
-            data: data
-        }).then(function(response) {
-            setTimeout(function(){
-                $rootScope.$apply(function() {
-                    $location.path('/home');
-                });
-            }, 3000);
-        }).catch(function(error){
-        });
+            console.log(data);
 
+            $http({
+                method: 'POST',
+                url: 'http://localhost:8080/createTask',
+                data: data
+            }).then(function(response) {
+                setTimeout(function(){
+                    $rootScope.$apply(function() {
+                        $location.path('/home');
+                    });
+                }, 3000);
+            }).catch(function(error){
+            });
+        }
     };
 
 });

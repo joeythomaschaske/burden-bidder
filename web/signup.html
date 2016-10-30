@@ -149,10 +149,13 @@
 
                     <div class="form-group">
                         <div class="cols-sm-10">
-                            <label for="terms">Terms & Conditions</label>
                             <div class="input-group">
-                                <span class="input-group-addon">I agree to the terms and conditions</span>
-                                <input type="checkbox" class="form-control" ng-model="agreeToTerms" id="terms" placeholder="Confirm your Password"/>
+
+                                <label>
+                                    <input type="checkbox" ng-model="agreeToTerms" id="terms"> I agree with the <a href="#">Terms and Conditions</a>.
+                                </label>
+                                <!--<input type="checkbox" class="form-control" ng-model="agreeToTerms" id="terms"/>-->
+                                <!--<span class="input-group-addon">I agree to the terms and conditions</span>-->
                             </div>
                         </div>
                     </div>
@@ -212,7 +215,7 @@
                             <label for="city">City</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                <input type="password" class="form-control" id="city" ng-model="city" placeholder="Enter your City"/>
+                                <input type="text" class="form-control" id="city" ng-model="city" placeholder="Enter your City"/>
                             </div>
                         </div>
                     </div>
@@ -222,7 +225,11 @@
                             <label for="state">State</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                <input type="password" class="form-control" ng-model="stateCode" id="state" placeholder="Enter your State"/>
+                                <select class="form-control">
+                                    <option ng-repeat="state in states" value="state.value" ng-model="stateCode">{{state.name}}</option>
+                                </select>
+
+                                <!--<input type="text" class="form-control" ng-model="stateCode" id="state" placeholder="Enter your State"/>-->
                             </div>
                         </div>
                     </div>
@@ -232,7 +239,7 @@
                             <label for="zip">Postal Code</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                <input type="password" class="form-control" ng-model="zip" id="zip" placeholder="Enter your Postal Code"/>
+                                <input type="text" class="form-control" ng-model="zip" id="zip" placeholder="Enter your Postal Code"/>
                             </div>
                         </div>
                     </div>
