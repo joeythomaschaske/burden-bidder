@@ -765,8 +765,8 @@
                     </div>
                     <div class="form-group">
                         <label for="category">Category</label>
-                        <select class="form-control">
-                            <option ng-repeat="category in categories" value="category.value" ng-model="category">{{category.name}}</option>
+                        <select class="form-control" ng-model="category" id="category">
+                            <option ng-repeat="category in categories" value="{{category.value}}">{{category.name}}</option>
                         </select>
                     </div>
                     <div class="form-group">

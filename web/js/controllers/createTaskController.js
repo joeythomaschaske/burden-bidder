@@ -2,7 +2,7 @@ burdenBidderApp.controller('createTaskController', function($scope, $http, $loca
 
     //check for auth
     angular.element(document).ready(function () {
-        if(!UserService.getUser()) {
+        if(!firebase.auth().currentUser) {
             $rootScope.$apply(function () {
                 $location.path('/');
             });
@@ -28,7 +28,8 @@ burdenBidderApp.controller('createTaskController', function($scope, $http, $loca
         {id: 5, name: 'Pet Sitting', value: 'Pet Sitting'},
         {id: 6, name: 'Computer Help', value: 'Computer Help'},
         {id: 7, name: 'Furniture Assembly', value: 'Furniture Assembly'},
-    ]
+        {id: 7, name: 'Yard Work', value: 'Yard Work'}
+    ];
 
     var handleFileSelect = function(evt) {
         var files = evt.target.files;
@@ -54,6 +55,12 @@ burdenBidderApp.controller('createTaskController', function($scope, $http, $loca
 
 
     $scope.createTask = function() {
+        console.log($scope.title);
+        console.log($scope.description);
+        console.log($scope.category.value);
+        console.log($scope.openingPrice);
+        console.log($scope.imageData);
+
         if(!$scope.title || !$scope.description || !$scope.category || !$scope.openingPrice ||
             !$scope.imageData) {
             $scope.errors = true;

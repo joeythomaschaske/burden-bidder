@@ -2,7 +2,7 @@ burdenBidderApp.controller('homeController', function($scope, $http, $location, 
 
     //check for auth
     angular.element(document).ready(function () {
-        if(!UserService.getUser()) {
+        if(!firebase.auth().currentUser) {
             $rootScope.$apply(function () {
                 $location.path('/');
             });
@@ -10,10 +10,22 @@ burdenBidderApp.controller('homeController', function($scope, $http, $location, 
     });
 
     $scope.tasks = [];
+    $scope.name;
 
     data = {
         userId : UserService.getUser().uid
     };
+
+    $http({
+        method: 'POST',
+        url: 'http://localhost:8080/getAccount',
+        data : data
+    }).then(function(response) {
+        $scope.name = response.data.firstName;
+        console.log(response);
+    }).catch(function(error){
+        console.log(error);
+    });
 
     //getting tasks
     $http({
@@ -26,5 +38,17 @@ burdenBidderApp.controller('homeController', function($scope, $http, $location, 
     }).catch(function(error){
         console.log(error);
     });
+
+    $scope.logout = function() {
+        firebase.auth().signOut().then(function() {
+            $rootScope.$apply(function () {
+                $location.path('/');
+            });
+        }, function(error) {
+            $rootScope.$apply(function () {
+                $location.path('/');
+            });
+        });
+    };
 
 });

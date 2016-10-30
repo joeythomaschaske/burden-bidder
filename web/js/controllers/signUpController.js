@@ -100,7 +100,7 @@ burdenBidderApp.controller('signUpController', function($scope, $http, $location
                 $rootScope.$apply(function() {
                     $location.path('/home');
                 });
-            }, 2000);
+            }, 3000);
         }
     };
 
@@ -131,9 +131,11 @@ burdenBidderApp.controller('signUpController', function($scope, $http, $location
             userId: UserService.getUser().uid
         };
 
+        console.log(data);
+
         $http({
             method: 'POST',
-            url: 'https://localhost:8080/create',
+            url: 'http://localhost:8080/create',
             data: data
         }).then(function(response) {
 

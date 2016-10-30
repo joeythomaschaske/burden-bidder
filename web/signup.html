@@ -152,7 +152,7 @@
                             <div class="input-group">
 
                                 <label>
-                                    <input type="checkbox" ng-model="agreeToTerms" id="terms"> I agree with the <a href="#">Terms and Conditions</a>.
+                                    <input type="checkbox" ng-model="agreeToTerms" id="terms"> I agree with the <a href="#/terms" target="_blank">Terms and Conditions</a>.
                                 </label>
                                 <!--<input type="checkbox" class="form-control" ng-model="agreeToTerms" id="terms"/>-->
                                 <!--<span class="input-group-addon">I agree to the terms and conditions</span>-->
@@ -225,8 +225,8 @@
                             <label for="state">State</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                <select class="form-control">
-                                    <option ng-repeat="state in states" value="state.value" ng-model="stateCode">{{state.name}}</option>
+                                <select class="form-control" id="state" ng-model="stateCode">
+                                    <option ng-repeat="state in states" value="{{state.value}}">{{state.name}}</option>
                                 </select>
 
                                 <!--<input type="text" class="form-control" ng-model="stateCode" id="state" placeholder="Enter your State"/>-->

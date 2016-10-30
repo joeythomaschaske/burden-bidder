@@ -2,7 +2,7 @@ burdenBidderApp.controller('accountController', function($scope, $http, $locatio
 
     //check for auth
     angular.element(document).ready(function () {
-        if(!UserService.getUser()) {
+        if(!firebase.auth().currentUser) {
             $rootScope.$apply(function () {
                 $location.path('/');
             });
