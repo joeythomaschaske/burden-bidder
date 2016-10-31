@@ -23,7 +23,7 @@ burdenBidderApp.controller('accountController', function($scope, $http, $locatio
     //getting tasks
     $http({
         method: 'POST',
-        url: 'http://localhost:8080/getAccount',
+        url: 'https://burdenbidderbacken.herokuapp.com/getAccount',
         data : data
     }).then(function(response) {
         $scope.user = response.data;

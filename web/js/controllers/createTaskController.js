@@ -82,7 +82,7 @@ burdenBidderApp.controller('createTaskController', function($scope, $http, $loca
 
             $http({
                 method: 'POST',
-                url: 'http://localhost:8080/createTask',
+                url: 'https://burdenbidderbacken.herokuapp.com/createTask',
                 data: data
             }).then(function(response) {
                 setTimeout(function(){

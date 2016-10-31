@@ -18,7 +18,7 @@ burdenBidderApp.controller('homeController', function($scope, $http, $location, 
 
     $http({
         method: 'POST',
-        url: 'http://localhost:8080/getAccount',
+        url: 'https://burdenbidderbacken.herokuapp.com/getAccount',
         data : data
     }).then(function(response) {
         $scope.name = response.data.firstName;
@@ -30,7 +30,7 @@ burdenBidderApp.controller('homeController', function($scope, $http, $location, 
     //getting tasks
     $http({
         method: 'POST',
-        url: 'http://localhost:8080/getAllTasks',
+        url: 'https://burdenbidderbacken.herokuapp.com/getAllTasks',
         data : data
     }).then(function(response) {
         $scope.tasks = response.data;
