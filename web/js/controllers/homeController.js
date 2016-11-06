@@ -1,4 +1,4 @@
-burdenBidderApp.controller('homeController', function($scope, $http, $location, UserService, $rootScope) {
+burdenBidderApp.controller('homeController', function($scope, $http, $location, UserService, $rootScope, $interval, $q) {
 
     //check for auth
     angular.element(document).ready(function () {
@@ -9,20 +9,30 @@ burdenBidderApp.controller('homeController', function($scope, $http, $location, 
         }
     });
 
-    $scope.tasks = [];
-    $scope.name;
+    //$scope.tasks = [];
+    $scope.name = '';
+    var inter;
 
+    var startTimer = function(){
+       inter = $interval( function () {
+
+        }, 1000);
+    };
+
+    $scope.$on('$destroy', function() {
+        // Make sure that the interval is destroyed too
+        $interval.cancel(inter);
+    });
     data = {
         userId : UserService.getUser().uid
     };
 
     $http({
         method: 'POST',
-        url: 'https://burdenbidderbacken.herokuapp.com/getAccount',
+        url: 'http://localhost:8080/getAccount',
         data : data
     }).then(function(response) {
         $scope.name = response.data.firstName;
-        console.log(response);
     }).catch(function(error){
         console.log(error);
     });
@@ -30,14 +40,19 @@ burdenBidderApp.controller('homeController', function($scope, $http, $location, 
     //getting tasks
     $http({
         method: 'POST',
-        url: 'https://burdenbidderbacken.herokuapp.com/getAllTasks',
+        url: 'http://localhost:8080/getAllTasks',
         data : data
     }).then(function(response) {
-        $scope.tasks = response.data;
-        console.log(response);
+        $scope.tasks = $.map(response.data, function(value, index) {
+            return [value];
+        });
+        setTimeout(function(){
+            startTimer();
+        }, 1000);
     }).catch(function(error){
         console.log(error);
     });
+
 
     $scope.logout = function() {
         firebase.auth().signOut().then(function() {

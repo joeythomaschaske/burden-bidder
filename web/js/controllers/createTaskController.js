@@ -65,6 +65,9 @@ burdenBidderApp.controller('createTaskController', function($scope, $http, $loca
             !$scope.imageData) {
             $scope.errors = true;
             $scope.message = 'All fields are required';
+            $rootScope.$apply(function () {
+            });
+
         } else {
             $scope.errors = false;
 
@@ -82,7 +85,7 @@ burdenBidderApp.controller('createTaskController', function($scope, $http, $loca
 
             $http({
                 method: 'POST',
-                url: 'https://burdenbidderbacken.herokuapp.com/createTask',
+                url: 'http://localhost:8080/createTask',
                 data: data
             }).then(function(response) {
                 setTimeout(function(){
