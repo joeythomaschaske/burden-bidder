@@ -9,21 +9,14 @@ burdenBidderApp.controller('accountController', function($scope, $http, $locatio
         }
     });
 
-    //$scope.user = UserService.getUser();
-    //user.name = user.firstName + " " + user.lastName;
-    //user.dob = user.dateOfBirth;
-    //user.street = user.street;
-    //user.state = user.stateCode;
-    //user.phoneNo = user.phoneNo;
-
-    data = {
+    var data = {
         userId : UserService.getUser().uid
     };
 
     //getting tasks
     $http({
         method: 'POST',
-        url: 'https://burdenbidderbacken.herokuapp.com/getAccount',
+        url: 'http://localHost:8080/getAccount',
         data : data
     }).then(function(response) {
         $scope.user = response.data;
