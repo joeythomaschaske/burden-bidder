@@ -787,8 +787,8 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive">
-                                        <button ng-click="edit()" type="button" class="btn btn-primary">Edit Account</button>
-                                        <button ng-click="save()" ng-if="editForm" type="button" class="btn btn-primary">Save</button>
+                                        <button ng-click="vm.edit()" type="button" class="btn btn-primary">Edit Account</button>
+                                        <button ng-click="vm.save()" ng-if="vm.editForm" type="button" class="btn btn-primary">Save</button>
                                     </div>
 
                                     <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
@@ -808,48 +808,48 @@
                                             <tbody>
                                             <tr>
                                                 <td>Email:</td>
-                                                <td ng-if="!editForm">{{user.email}}</td>
-                                                <td><input ng-if="editForm" type="text" ng-model="user.email"/></td>
+                                                <td ng-if="!vm.editForm">{{vm.user.email}}</td>
+                                                <td><input ng-if="vm.editForm" type="text" ng-model="vm.user.email"/></td>
                                             </tr>
                                             <tr>
                                                 <td>First Name:</td>
-                                                <td ng-if="!editForm">{{user.firstName}}</td>
-                                                <td><input ng-if="editForm" type="text" ng-model="user.firstName"/></td>
+                                                <td ng-if="!vm.editForm">{{vm.user.firstName}}</td>
+                                                <td><input ng-if="vm.editForm" type="text" ng-model="vm.user.firstName"/></td>
                                             </tr>
                                             <tr>
                                                 <td>Last Name:</td>
-                                                <td ng-if="!editForm">{{user.lastName}}</td>
-                                                <td><input ng-if="editForm" type="text" ng-model="user.lastName"/></td>
+                                                <td ng-if="!vm.editForm">{{vm.user.lastName}}</td>
+                                                <td><input ng-if="vm.editForm" type="text" ng-model="vm.user.lastName"/></td>
                                             </tr>
                                             <tr>
                                                 <td>Phone #:</td>
-                                                <td ng-if="!editForm">{{user.phoneNo}}</td>
-                                                <td><input ng-if="editForm" type="text" ng-model="user.phoneNo"/></td>
+                                                <td ng-if="!vm.editForm">{{vm.user.phoneNo}}</td>
+                                                <td><input ng-if="vm.editForm" type="text" ng-model="vm.user.phoneNo"/></td>
                                             </tr>
                                             <tr>
                                                 <td>Date of Birth:</td>
-                                                <td ng-if="!editForm">{{user.dateOfBirth}}</td>
-                                                <td><input ng-if="editForm" type="text" ng-model="user.dateOfBirth"/></td>
+                                                <td ng-if="!vm.editForm">{{vm.user.dateOfBirth}}</td>
+                                                <td><input ng-if="vm.editForm" type="text" ng-model="vm.user.dateOfBirth"/></td>
                                             </tr>
                                             <tr>
                                                 <td>Street Address:</td>
-                                                <td ng-if="!editForm">{{user.street}}</td>
-                                                <td><input ng-if="editForm" type="text" ng-model="user.street"/></td>
+                                                <td ng-if="!vm.editForm">{{vm.user.street}}</td>
+                                                <td><input ng-if="vm.editForm" type="text" ng-model="vm.user.street"/></td>
                                             </tr>
                                             <tr>
                                                 <td>City:</td>
-                                                <td ng-if="!editForm">{{user.city}}</td>
-                                                <td><input ng-if="editForm" type="text" ng-model="user.city"/></td>
+                                                <td ng-if="!vm.editForm">{{vm.user.city}}</td>
+                                                <td><input ng-if="vm.editForm" type="text" ng-model="vm.user.city"/></td>
                                             </tr>
                                             <tr>
                                                 <td>State:</td>
-                                                <td ng-if="!editForm">{{user.stateCode}}</td>
-                                                <td><input ng-if="editForm" type="text" ng-model="user.stateCode"/></td>
+                                                <td ng-if="!vm.editForm">{{vm.user.stateCode}}</td>
+                                                <td><input ng-if="vm.editForm" type="text" ng-model="vm.user.stateCode"/></td>
                                             </tr>
                                             <tr>
                                                 <td>Postal Code:</td>
-                                                <td ng-if="!editForm">{{user.zip}}</td>
-                                                <td><input ng-if="editForm" type="text" ng-model="user.zip"/></td>
+                                                <td ng-if="!vm.editForm">{{vm.user.zip}}</td>
+                                                <td><input ng-if="vm.editForm" type="text" ng-model="vm.user.zip"/></td>
                                             </tr>
 
                                             </tbody>

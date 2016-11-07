@@ -32,7 +32,8 @@ burdenBidderApp.config(function($routeProvider, $httpProvider) {
     })
     .when('/account', {
         templateUrl : 'account.html',
-        controller : 'accountController'
+        controller : 'accountController',
+        controllerAs : 'vm'
     })
     .when('/terms', {
         templateUrl : 'terms.html'

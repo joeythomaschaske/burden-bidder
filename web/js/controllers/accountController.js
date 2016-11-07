@@ -1,5 +1,5 @@
-burdenBidderApp.controller('accountController', function($scope, $http, $location, UserService, $rootScope) {
-
+burdenBidderApp.controller('accountController', function($http, $location, UserService, $rootScope) {
+    var vm = this;
     //check for auth
     angular.element(document).ready(function () {
         if(!firebase.auth().currentUser) {
@@ -8,30 +8,40 @@ burdenBidderApp.controller('accountController', function($scope, $http, $locatio
             });
         }
     });
-    $scope.editForm = false;
-
-    $scope.edit = function(){
-        $scope.editForm = true;
+    vm.editForm = false;
+    vm.edit = function(){
+        vm.editForm = true;
     };
-    $scope.save = function(){
-        $scope.editForm = false;
+
+
+
+    vm.save = function(){
+        vm.editForm = false;
+
+        //Data setup
+        var userIdKey = UserService.getUser().uid;
+        var newData = {
+            email: vm.user.email,
+            userId: userIdKey,
+            firstName: vm.user.firstName,
+            lastName: vm.user.lastName,
+            dateOfBirth: vm.user.dateOfBirth,
+            phoneNo: vm.user.phoneNo,
+            street: vm.user.street,
+            city: vm.user.city,
+            stateCode: vm.user.stateCode,
+            zip: vm.user.zip
+        };
+        console.log(newData);
         $http({
             method: 'POST',
             url: 'http://localhost:8080/create',
-            data: user.data
+            data: newData
         }).then(function (response) {
-            $scope.user = response.data;
-            console.log(response);
         }).catch(function(error){
             console.log(error);
         });
     };
-    //$scope.user = UserService.getUser();
-    //user.name = user.firstName + " " + user.lastName;
-    //user.dob = user.dateOfBirth;
-    //user.street = user.street;
-    //user.state = user.stateCode;
-    //user.phoneNo = user.phoneNo;
 
     data = {
         userId : UserService.getUser().uid
@@ -43,8 +53,9 @@ burdenBidderApp.controller('accountController', function($scope, $http, $locatio
         url: 'http://localhost:8080/getAccount',
         data : data
     }).then(function(response) {
-        $scope.user = response.data;
-        console.log(response);
+        vm.user = response.data;
+        console.log('Getting account');
+        console.log(response.data);
     }).catch(function(error){
         console.log(error);
     });
