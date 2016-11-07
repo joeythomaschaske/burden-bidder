@@ -135,7 +135,7 @@ burdenBidderApp.controller('signUpController', function($scope, $http, $location
 
         $http({
             method: 'POST',
-            url: 'https://burdenbidderbacken.herokuapp.com/create',
+            url: 'http://localhost:8080/create',
             data: data
         }).then(function(response) {
 

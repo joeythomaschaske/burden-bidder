@@ -38,5 +38,4 @@ burdenBidderApp.config(function($routeProvider, $httpProvider) {
     .when('/terms', {
         templateUrl : 'terms.html'
     });
-
 });
