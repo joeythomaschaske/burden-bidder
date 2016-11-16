@@ -31,6 +31,22 @@ burdenBidderApp.controller('createTaskController', function($scope, $http, $loca
         {id: 7, name: 'Yard Work', value: 'Yard Work'}
     ];
 
+    var lat;
+    var long;
+    if(navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(handleLocation);
+    } else {
+        alert('Location not supported');
+    }
+
+    function handleLocation(location) {
+        lat = location.coords.latitude;
+        long = location.coords.longitude;
+        console.log(location);
+        console.log(lat);
+        console.log(long);
+    }
+
     var handleFileSelect = function(evt) {
         var files = evt.target.files;
         var file = files[0];
@@ -68,6 +84,11 @@ burdenBidderApp.controller('createTaskController', function($scope, $http, $loca
             $rootScope.$apply(function () {
             });
 
+        } else if(!lat || !long) {
+            $scope.errors = true;
+            $scope.message = 'Location is required to post tasks';
+            $rootScope.$apply(function () {
+            });
         } else {
             $scope.errors = false;
 
@@ -78,7 +99,9 @@ burdenBidderApp.controller('createTaskController', function($scope, $http, $loca
                 openingPrice : $scope.openingPrice,
                 currentBid : $scope.openingPrice,
                 imageUpload : $scope.imageData,
-                taskCreatorId : UserService.getUser().uid
+                taskCreatorId : UserService.getUser().uid,
+                lat : lat,
+                long : long
             };
 
             console.log(data);
