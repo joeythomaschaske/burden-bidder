@@ -734,7 +734,7 @@
                             <ul class="list-inline form-horizontal">
                                 <li><a href="#/account" class="add-project" data-toggle="modal" data-target="#add_project">My Account</a></li>
                                 <li><a href="#/createTask" class="add-project" data-toggle="modal" data-target="#add_project">Create Task</a></li>
-                                <li><a ng-click="logout()" href class="add-project" data-toggle="modal" data-target="#add_project">Logout</a></li>
+                                <li><a ng-click="vm.logout()" href class="add-project" data-toggle="modal" data-target="#add_project">Logout</a></li>
                             </ul>
                         </div>
                     </div>
@@ -742,7 +742,7 @@
             </div>
             <div class="user-dashboard">
                 <h1>Hello, {{name}}</h1>
-                <div ng-repeat="task in tasks" class="row list-group-item">
+                <div ng-repeat="task in vm.tasks" class="row list-group-item">
                     <div class="media col-md-3">
                         <figure class="pull-left">
                             <img class="media-object img-rounded img-responsive"  src="data:image/jpeg;base64, {{task.imageUpload}}" alt="placehold.it/350x250" >
