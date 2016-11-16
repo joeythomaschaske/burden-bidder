@@ -12,23 +12,28 @@ burdenBidderApp.config(function($routeProvider, $httpProvider) {
     $routeProvider
     .when('/', {
         templateUrl : 'landing.html',
-        controller : 'landingController'
+        controller : 'landingController',
+        controllerAs : 'vm'
     })
     .when('/signup', {
         templateUrl : 'signup.html',
-        controller : 'signUpController'
+        controller : 'signUpController',
+        controllerAs : 'vm'
     })
     .when('/login', {
         templateUrl : 'login.html',
-        controller : 'loginController'
+        controller : 'loginController',
+        controllerAs : 'vm'
     })
     .when('/home', {
         templateUrl : 'home.html',
-        controller : 'homeController'
+        controller : 'homeController',
+        controllerAs : 'vm'
     })
     .when('/createTask', {
         templateUrl : 'createTask.html',
-        controller : 'createTaskController'
+        controller : 'createTaskController',
+        controllerAs : 'vm'
     })
     .when('/account', {
         templateUrl : 'account.html',

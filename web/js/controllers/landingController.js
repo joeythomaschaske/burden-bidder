@@ -1,11 +1,12 @@
 burdenBidderApp.controller('landingController', function($scope, $http, $location) {
+    var vm = this;
 
-    //these are functions that we can use in our html
-    $scope.login = function() {
+
+    vm.login = function() {
         $location.path('/login');
     };
 
-    $scope.signUp = function() {
+    vm.signUp = function() {
         $location.path('/signup');
     };
 });

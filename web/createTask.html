@@ -729,9 +729,9 @@
     }
 </style>
 <div class="row">
-    <div class="alert alert-danger" role="alert" ng-show="errors">
+    <div class="alert alert-danger" role="alert" ng-show="vm.errors">
         <span class="sr-only">Error:</span>
-        {{message}}
+        {{vm.message}}
     </div>
 </div>
 <div class="container-fluid display-table">
@@ -757,28 +757,28 @@
                 <div class="form">
                     <div class="form-group required">
                         <label required for="title">Title</label>
-                        <input required="required" type="text" class="form-control" id="title" placeholder="Title" ng-model="title">
+                        <input required="required" type="text" class="form-control" id="title" placeholder="Title" ng-model="vm.title">
                     </div>
                     <div class="form-group">
                         <label class="required" for="description">Description</label>
-                        <textarea required class="form-control" rows="3" id="description" ng-model="description"></textarea>
+                        <textarea required class="form-control" rows="3" id="description" ng-model="vm.description"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="category">Category</label>
-                        <select class="form-control" ng-model="category" id="category">
-                            <option ng-repeat="category in categories" value="{{category.value}}">{{category.name}}</option>
+                        <select class="form-control" ng-model="vm.category" id="category">
+                            <option ng-repeat="category in vm.categories" value="{{category.value}}">{{category.name}}</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="askingPrice">Asking Price</label>
-                        <input required type="number" class="form-control"  id="askingPrice" ng-model="openingPrice">
+                        <input required type="number" class="form-control"  id="askingPrice" ng-model="vm.openingPrice">
                     </div>
                     <div class="form-group">
                         <label for="image">Image</label>
                         <input required id="image" type="file" id="fileupload" />
                         <p class="help-block">Upload an image of the task you need help with.</p>
                     </div>
-                    <button ng-click="createTask()" type="submit" class="btn btn-default">Create</button>
+                    <button ng-click="vm.createTask()" type="submit" class="btn btn-default">Create</button>
                 </div>
             </div>
             <div class="col-lg-3"></div>

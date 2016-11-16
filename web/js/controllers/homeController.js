@@ -1,6 +1,6 @@
 burdenBidderApp.controller('homeController', function($scope, $http, $location, UserService, $rootScope, $interval, $q) {
 
-    //check for auth
+    var vm = this;
     angular.element(document).ready(function () {
         if(!firebase.auth().currentUser) {
             $rootScope.$apply(function () {
@@ -9,8 +9,8 @@ burdenBidderApp.controller('homeController', function($scope, $http, $location, 
         }
     });
 
-    //$scope.tasks = [];
-    $scope.name = '';
+    //vm.tasks = [];
+    vm.name = '';
     var inter;
 
     var startTimer = function(){
@@ -49,7 +49,7 @@ burdenBidderApp.controller('homeController', function($scope, $http, $location, 
         url: 'http://localhost:8080/getAccount',
         data : data
     }).then(function(response) {
-        $scope.name = response.data.firstName;
+        vm.name = response.data.firstName;
     }).catch(function(error){
         console.log(error);
     });
@@ -60,7 +60,7 @@ burdenBidderApp.controller('homeController', function($scope, $http, $location, 
         url: 'http://localhost:8080/getAllTasks',
         data : data
     }).then(function(response) {
-        $scope.tasks = $.map(response.data, function(value, index) {
+        vm.tasks = $.map(response.data, function(value, index) {
             return [value];
         });
         setTimeout(function(){
@@ -71,7 +71,7 @@ burdenBidderApp.controller('homeController', function($scope, $http, $location, 
     });
 
 
-    $scope.logout = function() {
+    vm.logout = function() {
         firebase.auth().signOut().then(function() {
             $rootScope.$apply(function () {
                 $location.path('/');

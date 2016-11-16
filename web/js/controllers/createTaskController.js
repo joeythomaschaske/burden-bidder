@@ -1,6 +1,6 @@
 burdenBidderApp.controller('createTaskController', function($scope, $http, $location, UserService, $rootScope) {
 
-    //check for auth
+    var vm = this;
     angular.element(document).ready(function () {
         if(!firebase.auth().currentUser) {
             $rootScope.$apply(function () {
@@ -9,17 +9,17 @@ burdenBidderApp.controller('createTaskController', function($scope, $http, $loca
         }
     });
 
-    $scope.errors = false;
-    $scope.message;
+    vm.errors = false;
+    vm.message;
 
-    $scope.title;
-    $scope.description;
-    $scope.category;
-    $scope.openingPrice;
-    $scope.imageUpload;
-    $scope.imageData;
+    vm.title;
+    vm.description;
+    vm.category;
+    vm.openingPrice;
+    vm.imageUpload;
+    vm.imageData;
 
-    $scope.categories = [
+    vm.categories = [
         {id: 0, name: '', value: 'empty'},
         {id: 1, name: 'Delivery', value: 'Delivery'},
         {id: 2, name: 'Cleaning', value: 'Cleaning'},
@@ -56,7 +56,7 @@ burdenBidderApp.controller('createTaskController', function($scope, $http, $loca
 
             reader.onload = function(readerEvt) {
                 var binaryString = readerEvt.target.result;
-                $scope.imageData = btoa(binaryString);
+                vm.imageData = btoa(binaryString);
             };
 
             reader.readAsBinaryString(file);
@@ -70,35 +70,31 @@ burdenBidderApp.controller('createTaskController', function($scope, $http, $loca
     }
 
 
-    $scope.createTask = function() {
-        console.log($scope.title);
-        console.log($scope.description);
-        console.log($scope.category.value);
-        console.log($scope.openingPrice);
-        console.log($scope.imageData);
+    vm.createTask = function() {
+        console.log(vm.title);
+        console.log(vm.description);
+        console.log(vm.category);
+        console.log(vm.openingPrice);
+        console.log(vm.imageData);
 
-        if(!$scope.title || !$scope.description || !$scope.category || !$scope.openingPrice ||
-            !$scope.imageData) {
-            $scope.errors = true;
-            $scope.message = 'All fields are required';
-            $rootScope.$apply(function () {
-            });
+        if(!vm.title || !vm.description || !vm.category || !vm.openingPrice ||
+            !vm.imageData) {
+            vm.errors = true;
+            vm.message = 'All fields are required';
 
         } else if(!lat || !long) {
-            $scope.errors = true;
-            $scope.message = 'Location is required to post tasks';
-            $rootScope.$apply(function () {
-            });
+            vm.errors = true;
+            vm.message = 'Location is required to post tasks';
         } else {
-            $scope.errors = false;
+            vm.errors = false;
 
             var data = {
-                title : $scope.title,
-                description : $scope.description,
-                category :$scope.category,
-                openingPrice : $scope.openingPrice,
-                currentBid : $scope.openingPrice,
-                imageUpload : $scope.imageData,
+                title : vm.title,
+                description : vm.description,
+                category :vm.category,
+                openingPrice : vm.openingPrice,
+                currentBid : vm.openingPrice,
+                imageUpload : vm.imageData,
                 taskCreatorId : UserService.getUser().uid,
                 lat : lat,
                 long : long
@@ -117,6 +113,8 @@ burdenBidderApp.controller('createTaskController', function($scope, $http, $loca
                     });
                 }, 3000);
             }).catch(function(error){
+                console.log('ERROR!');
+                console.log(error);
             });
         }
     };
