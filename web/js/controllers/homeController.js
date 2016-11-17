@@ -10,7 +10,6 @@ burdenBidderApp.controller('homeController', function($scope, $http, $location, 
     });
 
     //vm.tasks = [];
-    vm.name = '';
     var inter;
 
     var startTimer = function(){
@@ -64,6 +63,7 @@ burdenBidderApp.controller('homeController', function($scope, $http, $location, 
             return [value];
         });
         setTimeout(function(){
+
             startTimer();
         }, 1000);
     }).catch(function(error){

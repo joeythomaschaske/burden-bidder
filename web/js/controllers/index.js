@@ -1,7 +1,7 @@
 /**
  * Created by Joseph on 10/19/16.
  */
-var burdenBidderApp = angular.module('BurdenBidder', ['ngRoute']);
+var burdenBidderApp = angular.module('BurdenBidder', ['ngRoute', 'ngMap']);
 
 
 burdenBidderApp.config(function($routeProvider, $httpProvider) {
@@ -45,6 +45,7 @@ burdenBidderApp.config(function($routeProvider, $httpProvider) {
     })
     .when('/taskDetail/:Id', {
         templateUrl : 'taskDetail.html',
-        controller : 'taskDetailController'
+        controller : 'taskDetailController',
+        controllerAs : 'vm'
     });
 });
