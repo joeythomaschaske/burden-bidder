@@ -1,24 +1,25 @@
 burdenBidderApp.controller('signUpController', function($scope, $http, $location, UserService, $rootScope) {
     //scope are out variables that we use to communicate with the html
-    $scope.formOne = true;
-    $scope.errors = false;
-    $scope.message;
+    var vm = this;
+    vm.formOne = true;
+    vm.errors = false;
+    vm.message;
 
-    $scope.firstName;
-    $scope.lastName;
-    $scope.email;
-    $scope.password;
-    $scope.confirmPass;
-    $scope.agreeToTerms;
+    vm.firstName;
+    vm.lastName;
+    vm.email;
+    vm.password;
+    vm.confirmPass;
+    vm.agreeToTerms;
 
-    $scope.dateOfBirth;
-    $scope.phoneNo;
-    $scope.street;
-    $scope.city;
-    $scope.stateCode;
-    $scope.zip;
+    vm.dateOfBirth;
+    vm.phoneNo;
+    vm.street;
+    vm.city;
+    vm.stateCode;
+    vm.zip;
 
-    $scope.states = [
+    vm.states = [
         {id: 0, name: '', value: 'Empty'},
         {id: 1, name: 'Alabama', value: 'Alabama'},
         {id: 2, name: 'Alaska' , value: 'Alaska'},
@@ -72,29 +73,29 @@ burdenBidderApp.controller('signUpController', function($scope, $http, $location
         {id: 50, name: 'Wyoming', value: 'Wyoming'}
     ];
 
-    $scope.next = function() {
-        if(!$scope.firstName || !$scope.lastName || !$scope.email || !$scope.password || !$scope.confirmPass || !$scope.agreeToTerms) {
-            $scope.errors = true;
-            $scope.message = 'All fields are required';
-        } else if ($scope.password !== $scope.confirmPass) {
-            $scope.errors = true;
-            $scope.message = 'Passwords must match';
+    vm.next = function() {
+        if(!vm.firstName || !vm.lastName || !vm.email || !vm.password || !vm.confirmPass || !vm.agreeToTerms) {
+            vm.errors = true;
+            vm.message = 'All fields are required';
+        } else if (vm.password !== vm.confirmPass) {
+            vm.errors = true;
+            vm.message = 'Passwords must match';
         } else {
-            $scope.errors = false;
-            $scope.formOne = !$scope.formOne;
+            vm.errors = false;
+            vm.formOne = !vm.formOne;
         }
     };
 
-    $scope.prev = function() {
-        $scope.formOne = !$scope.formOne;
+    vm.prev = function() {
+        vm.formOne = !vm.formOne;
     };
 
-    $scope.finish = function() {
-        if(!$scope.dateOfBirth || !$scope.phoneNo || !$scope.street || !$scope.city || !$scope.stateCode || !$scope.zip) {
-            $scope.errors = true;
-            $scope.message = 'All fields are required';
+    vm.finish = function() {
+        if(!vm.dateOfBirth || !vm.phoneNo || !vm.street || !vm.city || !vm.stateCode || !vm.zip) {
+            vm.errors = true;
+            vm.message = 'All fields are required';
         } else {
-            $scope.errors = false;
+            vm.errors = false;
             register();
             setTimeout(function(){
                 $rootScope.$apply(function() {
@@ -105,29 +106,29 @@ burdenBidderApp.controller('signUpController', function($scope, $http, $location
     };
 
     function register() {
-        firebase.auth().createUserWithEmailAndPassword($scope.email, $scope.password)
+        firebase.auth().createUserWithEmailAndPassword(vm.email, vm.password)
         .then(function (user) {
             console.log(user);
             UserService.setUser(user);
             createAccount();
         })
         .catch(function (error) {
-            $scope.message = error.message;
-            alert($scope.message);
+            vm.message = error.message;
+            alert(vm.message);
         });
     }
 
     function createAccount() {
         var data = {
-            firstName : $scope.firstName,
-            lastName : $scope.lastName,
-            email : $scope.email,
-            dateOfBirth : $scope.dateOfBirth,
-            phoneNo : $scope.phoneNo,
-            street : $scope.street,
-            city : $scope.city,
-            stateCode: $scope.stateCode,
-            zip: $scope.zip,
+            firstName : vm.firstName,
+            lastName : vm.lastName,
+            email : vm.email,
+            dateOfBirth : vm.dateOfBirth,
+            phoneNo : vm.phoneNo,
+            street : vm.street,
+            city : vm.city,
+            stateCode: vm.stateCode,
+            zip: vm.zip,
             userId: UserService.getUser().uid
         };
 
@@ -135,7 +136,7 @@ burdenBidderApp.controller('signUpController', function($scope, $http, $location
 
         $http({
             method: 'POST',
-            url: 'http://localHost:8080/create',
+            url: 'http://localhost:8080/create',
             data: data
         }).then(function(response) {
 

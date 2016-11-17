@@ -79,9 +79,9 @@
 <!-- form one -->
 <div class="intro-header" style='position:absolute;z-index:0;left:0;top:0;width:100%;height:100%'">
     <div class="row">
-        <div class="alert alert-danger" role="alert" ng-show="errors">
+        <div class="alert alert-danger" role="alert" ng-show="vm.errors">
             <span class="sr-only">Error:</span>
-            {{message}}
+            {{vm.message}}
         </div>
     </div>
     <div class="row main">
@@ -98,7 +98,7 @@
                         <label for="email">Email</label>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" ng-model="email" id="email" placeholder="Enter your Email"/>
+                            <input type="text" class="form-control" ng-model="vm.email" id="email" placeholder="Enter your Email"/>
                         </div>
                     </div>
                 </div>
@@ -108,13 +108,13 @@
                         <label for="password">Password</label>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            <input type="password" class="form-control" id="password" ng-model="password" placeholder="Enter your Password"/>
+                            <input type="password" class="form-control" id="password" ng-model="vm.password" placeholder="Enter your Password"/>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group ">
-                    <button ng-click="login()" type="button" class="btn btn-primary btn-lg btn-block login-button">Login</button>
+                    <button ng-click="vm.login()" type="button" class="btn btn-primary btn-lg btn-block login-button">Login</button>
                 </div>
             </form>
         </div>

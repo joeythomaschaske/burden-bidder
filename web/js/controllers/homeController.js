@@ -1,6 +1,6 @@
-burdenBidderApp.controller('homeController', function($scope, $http, $location, UserService, $rootScope) {
+burdenBidderApp.controller('homeController', function($scope, $http, $location, UserService, $rootScope, $interval, $q) {
 
-    //check for auth
+    var vm = this;
     angular.element(document).ready(function () {
         if(!firebase.auth().currentUser) {
             $rootScope.$apply(function () {
@@ -9,9 +9,37 @@ burdenBidderApp.controller('homeController', function($scope, $http, $location, 
         }
     });
 
-    $scope.tasks = [];
-    $scope.name;
+    //vm.tasks = [];
+    vm.name = '';
+    var inter;
 
+    var startTimer = function(){
+       inter = $interval( function () {
+           var timers = document.getElementsByClassName("timer");
+           for(var i = 0; i < timers.length; ++i ) {
+               var currentTime = timers[i].innerText;
+               var minutes = parseInt(currentTime.split(':')[0]);
+               var seconds = parseInt(currentTime.split(':')[1]);
+
+               if (seconds == 0) {
+                   minutes -= 1;
+                   seconds = 59;
+               } else {
+                   seconds -= 1;
+               }
+
+               if(seconds.toString().length == 1) {
+                   seconds = '0' + seconds;
+               }
+               timers[i].innerText = minutes + ':' + seconds;
+           }
+        }, 1000);
+    };
+
+    $scope.$on('$destroy', function() {
+        // Make sure that the interval is destroyed too
+        $interval.cancel(inter);
+    });
     data = {
         userId : UserService.getUser().uid
     };
@@ -21,8 +49,7 @@ burdenBidderApp.controller('homeController', function($scope, $http, $location, 
         url: 'http://localHost:8080/getAccount',
         data : data
     }).then(function(response) {
-        $scope.name = response.data.firstName;
-        console.log(response);
+        vm.name = response.data.firstName;
     }).catch(function(error){
         console.log(error);
     });
@@ -33,13 +60,18 @@ burdenBidderApp.controller('homeController', function($scope, $http, $location, 
         url: 'http://localHost:8080/getAllTasks',
         data : data
     }).then(function(response) {
-        $scope.tasks = response.data;
-        console.log(response);
+        vm.tasks = $.map(response.data, function(value, index) {
+            return [value];
+        });
+        setTimeout(function(){
+            startTimer();
+        }, 1000);
     }).catch(function(error){
         console.log(error);
     });
 
-    $scope.logout = function() {
+
+    vm.logout = function() {
         firebase.auth().signOut().then(function() {
             $rootScope.$apply(function () {
                 $location.path('/');

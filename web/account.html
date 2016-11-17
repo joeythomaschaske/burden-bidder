@@ -786,7 +786,10 @@
                             </div>
                             <div class="panel-body">
                                 <div class="row">
-                                    <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive"> </div>
+                                    <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive">
+                                        <button ng-click="vm.edit()" type="button" class="btn btn-primary">Edit Account</button>
+                                        <button ng-click="vm.save()" ng-if="vm.editForm" type="button" class="btn btn-primary">Save</button>
+                                    </div>
 
                                     <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
                                       <dl>
@@ -805,30 +808,52 @@
                                             <tbody>
                                             <tr>
                                                 <td>Email:</td>
-                                                <td>{{user.email}}</td>
+                                                <td ng-if="!vm.editForm">{{vm.user.email}}</td>
+                                                <td><input ng-if="vm.editForm" type="text" ng-model="vm.user.email"/></td>
                                             </tr>
                                             <tr>
-                                                <td>Phone #</td>
-                                                <td>{{user.phoneNo}}</td>
+                                                <td>First Name:</td>
+                                                <td ng-if="!vm.editForm">{{vm.user.firstName}}</td>
+                                                <td><input ng-if="vm.editForm" type="text" ng-model="vm.user.firstName"/></td>
                                             </tr>
                                             <tr>
-                                                <td>Date of Birth</td>
-                                                <td>{{user.dateOfBirth}}</td>
-                                            </tr>
-
-                                            <tr>
-                                            <tr>
-                                                <td>Address</td>
-                                                <td>{{user.street}}</td>
+                                                <td>Last Name:</td>
+                                                <td ng-if="!vm.editForm">{{vm.user.lastName}}</td>
+                                                <td><input ng-if="vm.editForm" type="text" ng-model="vm.user.lastName"/></td>
                                             </tr>
                                             <tr>
-                                                <td>State</td>
-                                                <td>{{user.stateCode}}</td>
+                                                <td>Phone #:</td>
+                                                <td ng-if="!vm.editForm">{{vm.user.phoneNo}}</td>
+                                                <td><input ng-if="vm.editForm" type="text" ng-model="vm.user.phoneNo"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Date of Birth:</td>
+                                                <td ng-if="!vm.editForm">{{vm.user.dateOfBirth}}</td>
+                                                <td><input ng-if="vm.editForm" type="text" ng-model="vm.user.dateOfBirth"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Street Address:</td>
+                                                <td ng-if="!vm.editForm">{{vm.user.street}}</td>
+                                                <td><input ng-if="vm.editForm" type="text" ng-model="vm.user.street"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>City:</td>
+                                                <td ng-if="!vm.editForm">{{vm.user.city}}</td>
+                                                <td><input ng-if="vm.editForm" type="text" ng-model="vm.user.city"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>State:</td>
+                                                <td ng-if="!vm.editForm">{{vm.user.stateCode}}</td>
+                                                <td><input ng-if="vm.editForm" type="text" ng-model="vm.user.stateCode"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Postal Code:</td>
+                                                <td ng-if="!vm.editForm">{{vm.user.zip}}</td>
+                                                <td><input ng-if="vm.editForm" type="text" ng-model="vm.user.zip"/></td>
                                             </tr>
 
                                             </tbody>
                                         </table>
-
                                         <a href="#" class="btn btn-primary">View Tasks Created</a>
                                         <a href="#" class="btn btn-primary">View Tasks Assigned</a>
                                     </div>
