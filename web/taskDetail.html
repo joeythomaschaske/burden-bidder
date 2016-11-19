@@ -821,6 +821,35 @@
 
 </style>
 <div class="container">
+    <div class="row">
+        <header>
+            <div class="col-md-7">
+                <h3>Burden Bidder</h3>
+                <!-- search
+                <nav class="navbar-default pull-left">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvas" data-target="#side-menu" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                </nav>
+                <div class="search hidden-xs hidden-sm">
+                    <input type="text" placeholder="Search" id="search">
+                </div>
+                -->
+            </div>
+            <div class="col-md-5">
+                <div class="header-rightside">
+                    <ul class="list-inline header-top pull-right">
+                        <li class="hidden-xs"><a href="#/home" class="add-project" data-toggle="modal" data-target="#add_project">Home</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+    </div>
     <div class="card">
         <div class="container-fluid">
             <div></div>
@@ -838,7 +867,7 @@
                     <div class="action">
                         <label required for="bidAmount">Bid Amount</label>
                         <input class required="required" id="bidAmount" type="number" placeholder="Enter bid amount" ng-model="vm.bidAmount">
-                        <button class="add-to-cart btn btn-default" type="button" ng-click="vm.doBid">Bid</button>
+                        <button class="add-to-cart btn btn-default" type="button" ng-click="vm.doBid()">Bid</button>
                     </div>
                     <ng-map zoom="15" center="[{{vm.task.lat}}, {{vm.task.long}}]">
                         <marker position="[{{vm.task.lat}}, {{vm.task.long}}]" />

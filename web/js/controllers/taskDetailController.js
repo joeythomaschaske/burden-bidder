@@ -1,5 +1,6 @@
 burdenBidderApp.controller('taskDetailController', function($scope, $routeParams, $http, $location, UserService, $rootScope) {
 
+    console.clear();
     var vm = this;
     //check for auth
     angular.element(document).ready(function () {
@@ -10,18 +11,6 @@ burdenBidderApp.controller('taskDetailController', function($scope, $routeParams
         }
     });
 
-    var initMap = function() {
-        var uluru = {lat: vm.task.lat, lng: vm.task.long};
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 4,
-            center: uluru
-        });
-        var marker = new google.maps.Marker({
-            position: uluru,
-            map: map
-        });
-    }
-
     var userData = {
         userId : UserService.getUser().uid
     };
@@ -30,23 +19,19 @@ burdenBidderApp.controller('taskDetailController', function($scope, $routeParams
         taskId : $routeParams.Id
     };
 
-    vm.bidAmount = 0;
-    vm.doBid = doBid;
-
-
-    function doBid() {
+    vm.doBid = function doBid() {
         // Updating task. TODO: Only update currentBid field.
-        taskData.currentBid = taskData.currentBid - vm.bidAmount;
+        vm.task.currentBid = vm.task.currentBid - vm.bidAmount;
         $http({
             method: 'POST',
-            url: 'http://localHost:8080/createTask',
-            data: data
+            url: 'http://localHost:8080/updateTask',
+            data: vm.task
         }).then(function(response) {
             setTimeout(function(){
                 $rootScope.$apply(function() {
-                    $location.path('/taskDetail/:' + taskData.taskId);
+                    $location.path('/taskDetail/' + taskData.taskId);
                 });
-            }, 3000);
+            }, 1000);
         }).catch(function(error){
         });
     }
