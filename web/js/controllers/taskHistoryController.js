@@ -15,7 +15,7 @@ burdenBidderApp.controller('taskHistoryController', function($scope, $http, $loc
 
     $http({
         method: 'POST',
-        url: 'https://www.burdenbidderbacken.herokuapp.com/getAccount',
+        url: 'https://burdenbidderbacken.herokuapp.com/getAccount',
         data : data
     }).then(function(response) {
         vm.userId = response.data.userId;
@@ -26,7 +26,7 @@ burdenBidderApp.controller('taskHistoryController', function($scope, $http, $loc
     //getting tasks
     $http({
         method: 'POST',
-        url: 'https://www.burdenbidderbacken.herokuapp.com/getUserBiddedTasks',
+        url: 'https://burdenbidderbacken.herokuapp.com/getUserBiddedTasks',
         data : data
     }).then(function(response) {
         vm.userBiddedTasks = $.map(response.data, function(value, index) {
@@ -37,7 +37,7 @@ burdenBidderApp.controller('taskHistoryController', function($scope, $http, $loc
     });
     $http({
         method: 'POST',
-        url: 'https://www.burdenbidderbacken.herokuapp.com/getUserCreatedTasks',
+        url: 'https://burdenbidderbacken.herokuapp.com/getUserCreatedTasks',
         data : data
     }).then(function(response) {
         vm.userCreatedTasks = $.map(response.data, function(value, index) {
