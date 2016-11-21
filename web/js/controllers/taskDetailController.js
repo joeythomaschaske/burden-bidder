@@ -55,7 +55,7 @@ burdenBidderApp.controller('taskDetailController', function($scope, $routeParams
         vm.task.taskBidderId = userData.userId;
         $http({
             method: 'POST',
-            url: 'burdenbidder.appspot.com/updateTask',
+            url: 'https://www.burdenbidder.appspot.com/updateTask',
             data: vm.task
         }).then(function(response) {
             setTimeout(function(){
@@ -70,7 +70,7 @@ burdenBidderApp.controller('taskDetailController', function($scope, $routeParams
     //getting Task
     $http({
         method: 'POST',
-        url: 'burdenbidder.appspot.com/getTask',
+        url: 'https://www.burdenbidder.appspot.com/getTask',
         data : taskData
     }).then(function(response) {
         vm.task = response.data;
@@ -88,7 +88,7 @@ burdenBidderApp.controller('taskDetailController', function($scope, $routeParams
     //getting Account
     $http({
         method: 'POST',
-        url: 'burdenbidder.appspot.com/getAccount',
+        url: 'https://www.burdenbidder.appspot.com/getAccount',
         data : userData
     }).then(function(response) {
         vm.user = response.data;
