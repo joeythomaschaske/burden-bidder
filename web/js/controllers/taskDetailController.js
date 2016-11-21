@@ -55,7 +55,7 @@ burdenBidderApp.controller('taskDetailController', function($scope, $routeParams
         vm.task.taskBidderId = userData.userId;
         $http({
             method: 'POST',
-            url: 'https://burdenbidderbacken.herokuapp.com/updateTask',
+            url: 'http://localHost:8080/updateTask',
             data: vm.task
         }).then(function(response) {
             setTimeout(function(){
@@ -70,7 +70,7 @@ burdenBidderApp.controller('taskDetailController', function($scope, $routeParams
     //getting Task
     $http({
         method: 'POST',
-        url: 'https://burdenbidderbacken.herokuapp.com/getTask',
+        url: 'http://localHost:8080/getTask',
         data : taskData
     }).then(function(response) {
         vm.task = response.data;
@@ -88,7 +88,7 @@ burdenBidderApp.controller('taskDetailController', function($scope, $routeParams
     //getting Account
     $http({
         method: 'POST',
-        url: 'https://burdenbidderbacken.herokuapp.com/getAccount',
+        url: 'http://localHost:8080/getAccount',
         data : userData
     }).then(function(response) {
         vm.user = response.data;

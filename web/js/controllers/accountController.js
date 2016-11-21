@@ -59,7 +59,7 @@ burdenBidderApp.controller('accountController', function($http, $location, UserS
         console.log(newData);
         $http({
             method: 'POST',
-            url: 'https://burdenbidderbacken.herokuapp.com/create',
+            url: 'http://localhost:8080/create',
             data: newData
         }).then(function (response) {
         }).catch(function(error){
@@ -74,7 +74,7 @@ burdenBidderApp.controller('accountController', function($http, $location, UserS
     //getting tasks
     $http({
         method: 'POST',
-        url: 'https://burdenbidderbacken.herokuapp.com/getAccount',
+        url: 'http://localhost:8080/getAccount',
         data : data
     }).then(function(response) {
         vm.user = response.data;
