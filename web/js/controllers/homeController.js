@@ -45,7 +45,7 @@ burdenBidderApp.controller('homeController', function($scope, $http, $location, 
 
     $http({
         method: 'POST',
-        url: 'http://localHost:8080/getAccount',
+        url: 'burdenbidder.appspot.com/getAccount',
         data : data
     }).then(function(response) {
         vm.name = response.data.firstName;
@@ -56,7 +56,7 @@ burdenBidderApp.controller('homeController', function($scope, $http, $location, 
     //getting tasks
     $http({
         method: 'POST',
-        url: 'http://localHost:8080/getAllTasks',
+        url: 'burdenbidder.appspot.com/getAllTasks',
         data : data
     }).then(function(response) {
         vm.tasks = $.map(response.data, function(value, index) {

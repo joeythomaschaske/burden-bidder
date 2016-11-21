@@ -104,7 +104,7 @@ burdenBidderApp.controller('createTaskController', function($scope, $http, $loca
 
             $http({
                 method: 'POST',
-                url: 'http://localHost:8080/createTask',
+                url: 'burdenbidder.appspot.com/createTask',
                 data: data
             }).then(function(response) {
                 setTimeout(function(){
