@@ -15,7 +15,7 @@ burdenBidderApp.controller('taskHistoryController', function($scope, $http, $loc
 
     $http({
         method: 'POST',
-        url: 'http://localHost:8080/getAccount',
+        url: 'https://www.burdenbidder.appspot.com/getAccount',
         data : data
     }).then(function(response) {
         vm.userId = response.data.userId;
@@ -26,7 +26,7 @@ burdenBidderApp.controller('taskHistoryController', function($scope, $http, $loc
     //getting tasks
     $http({
         method: 'POST',
-        url: 'http://localHost:8080/getUserBiddedTasks',
+        url: 'https://www.burdenbidder.appspot.com/getUserBiddedTasks',
         data : data
     }).then(function(response) {
         vm.userBiddedTasks = $.map(response.data, function(value, index) {
@@ -37,7 +37,7 @@ burdenBidderApp.controller('taskHistoryController', function($scope, $http, $loc
     });
     $http({
         method: 'POST',
-        url: 'http://localHost:8080/getUserCreatedTasks',
+        url: 'https://www.burdenbidder.appspot.com/getUserCreatedTasks',
         data : data
     }).then(function(response) {
         vm.userCreatedTasks = $.map(response.data, function(value, index) {

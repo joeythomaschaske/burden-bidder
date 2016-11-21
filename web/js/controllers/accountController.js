@@ -59,7 +59,7 @@ burdenBidderApp.controller('accountController', function($http, $location, UserS
         console.log(newData);
         $http({
             method: 'POST',
-            url: 'http://localhost:8080/create',
+            url: 'https://www.burdenbidder.appspot.com/create',
             data: newData
         }).then(function (response) {
         }).catch(function(error){
@@ -74,7 +74,7 @@ burdenBidderApp.controller('accountController', function($http, $location, UserS
     //getting tasks
     $http({
         method: 'POST',
-        url: 'http://localhost:8080/getAccount',
+        url: 'https://www.burdenbidder.appspot.com/getAccount',
         data : data
     }).then(function(response) {
         vm.user = response.data;

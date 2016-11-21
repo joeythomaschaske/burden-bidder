@@ -137,7 +137,7 @@ burdenBidderApp.controller('signUpController', function($scope, $http, $location
 
         $http({
             method: 'POST',
-            url: 'http://localhost:8080/create',
+            url: 'https://www.burdenbidder.appspot.com/create',
             data: data
         }).then(function(response) {
 
