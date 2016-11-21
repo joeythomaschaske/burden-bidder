@@ -47,5 +47,9 @@ burdenBidderApp.config(function($routeProvider, $httpProvider) {
         templateUrl : 'taskDetail.html',
         controller : 'taskDetailController',
         controllerAs : 'vm'
+    }).when('/taskHistory',{
+        templateUrl : 'taskHistory.html',
+        controller : 'taskHistoryController',
+        controllerAs : 'vm'
     });
 });
