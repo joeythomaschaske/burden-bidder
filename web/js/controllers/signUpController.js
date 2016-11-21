@@ -120,6 +120,7 @@ burdenBidderApp.controller('signUpController', function($scope, $http, $location
 
     function createAccount() {
         var data = {
+            picture: "https://www.sparklabs.com/forum/styles/comboot/theme/images/default_avatar.jpg",
             firstName : vm.firstName,
             lastName : vm.lastName,
             email : vm.email,
