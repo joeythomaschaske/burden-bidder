@@ -11,6 +11,7 @@ burdenBidderApp.controller('taskDetailController', function($scope, $routeParams
         }
     });
 
+    vm.isCreator = false;
     var inter;
     var startTimer = function(){
         inter = $interval( function () {
@@ -51,6 +52,7 @@ burdenBidderApp.controller('taskDetailController', function($scope, $routeParams
     vm.doBid = function doBid() {
         // Updating task. TODO: Only update currentBid field.
         vm.task.currentBid = vm.task.currentBid - vm.bidAmount;
+        vm.task.taskBidderId = userData.userId;
         $http({
             method: 'POST',
             url: 'http://localHost:8080/updateTask',
@@ -72,6 +74,7 @@ burdenBidderApp.controller('taskDetailController', function($scope, $routeParams
         data : taskData
     }).then(function(response) {
         vm.task = response.data;
+        if (vm.task.taskCreatorId == userData.userId) vm.isCreator = true;
         vm.location = "https://maps.googleapis.com/maps/api/staticmap?center="+response.data.lat + "," + response.data.long+"&zoom=14&size=400x300&sensor=false&markers=color:blue%7Clabel:S%7C11211%7C11206%7C11222&key=AIzaSyBkDevEaVTA1nfM0ZplMzePTgTpQ2hQRyI";
         console.log(response);
         setTimeout(function(){

@@ -868,7 +868,7 @@
                     <p class="product-description">{{vm.task.decription}}</p>
                     <h4 class="price">Original price: <span>{{vm.task.openingPrice}}</span></h4>
                     <h4 class="price">Current price: <span>{{vm.task.currentBid}}</span></h4>
-                    <div class="action">
+                    <div class="action"  ng-if="!vm.isCreator">
                         <label required for="bidAmount">Bid Amount</label>
                         <input class required="required" id="bidAmount" type="number" placeholder="Enter bid amount" ng-model="vm.bidAmount">
                         <button class="add-to-cart btn btn-default" type="button" ng-click="vm.doBid()">Bid</button>
