@@ -713,12 +713,12 @@
                 <header>
                     <div class="col-md-3">
                         <h3>Burden Bidder</h3>
+
                     </div>
                     <div class="col-md-9">
                         <div class="header-rightside">
                             <ul class="list-inline form-horizontal">
-                                <li><a href="#/account" class="add-project" data-toggle="modal" data-target="#add_project">My Account</a></li>
-                                <li><a href="#/createTask" class="add-project" data-toggle="modal" data-target="#add_project">Create Task</a></li>
+                                <li class="hidden-xs"><a href="#/home" class="add-project" data-toggle="modal" data-target="#add_project">Home</a></li>
                                 <li><a href="#/taskHistory" class="add-project" data-toggle="modal" data-target="#add_project">View Task History</a></li>
                                 <li><a ng-click="vm.logout()" href class="add-project" data-toggle="modal" data-target="#add_project">Logout</a></li>
                             </ul>
@@ -727,28 +727,45 @@
                 </header>
             </div>
             <div class="user-dashboard">
-                <h1>Hello, {{vm.name}}</h1>
-                <div ng-repeat="task in vm.tasks" class="row list-group-item">
-                    <div class="media col-md-3">
-                        <figure class="pull-left">
-                            <img class="media-object img-rounded img-responsive"  src="data:image/jpeg;base64, {{task.imageUpload}}" alt="placehold.it/350x250" >
-                        </figure>
-                        <figure class="pull-left">
-                            <b class="timer">{{task.createdDate | countdown}}</b> <small>Time left to bid</small>
-                        </figure>
+                <h2>Tasks Created</h2>
+                <div ng-repeat="task in vm.userCreatedTasks" class="row list-group-item">
+                    <div ng-if="task.taskCreatorId == vm.userId">
+                        <div class="media col-md-3">
+                            <figure class="pull-left">
+                                <img class="media-object img-rounded img-responsive"  src="data:image/jpeg;base64, {{task.imageUpload}}" alt="placehold.it/350x250" >
+                            </figure>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="list-group-item-heading"> {{task.title}} </h4>
+                            <p class="list-group-item-text">
+                                {{task.decription}}
+                            </p>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <h2> {{task.openingPrice}} <small> Asking Price </small></h2>
+                            <h2> {{task.currentBid}} <small> Current Bid </small></h2>
+                            <b> Category </b> <small>{{task.category}}</small>
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <h4 class="list-group-item-heading"> {{task.title}} </h4>
-                        <p class="list-group-item-text">
-                            {{task.decription}}
-                        </p>
-                    </div>
-                    <div class="col-md-3 text-center">
-                        <h2> {{task.openingPrice}} <small> Asking Price </small></h2>
-                        <h2> {{task.currentBid}} <small> Current Bid </small></h2>
-                        <a class="btn btn-default btn-lg btn-block" ng-href="#/taskDetail/{{task.Id}}"> Bid </a>
-                        <b> Category </b> <small>{{task.category}}</small>
-                    </div>
+                </div>
+                <h2>Tasks Assigned</h2>
+                <div ng-repeat="task in vm.userBiddedTasks" class="row list-group-item">
+                        <div class="media col-md-3">
+                            <figure class="pull-left">
+                                <img class="media-object img-rounded img-responsive"  src="data:image/jpeg;base64, {{task.imageUpload}}" alt="placehold.it/350x250" >
+                            </figure>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="list-group-item-heading"> {{task.title}} </h4>
+                            <p class="list-group-item-text">
+                                {{task.decription}}
+                            </p>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <h2> {{task.openingPrice}} <small> Asking Price </small></h2>
+                            <h2> {{task.currentBid}} <small> Current Bid </small></h2>
+                            <b> Category </b> <small>{{task.category}}</small>
+                        </div>
                 </div>
             </div>
         </div>
