@@ -13,7 +13,7 @@ burdenBidderApp.controller('taskHistoryController', function($scope, $http, $loc
         userId : UserService.getUser().uid
     };
 
-    vm.completeTask = function(taskId) {
+    vm.completeTask = function(taskId, creatorId) {
         var updatedTask = {
             Id: taskId
         };
@@ -28,7 +28,7 @@ burdenBidderApp.controller('taskHistoryController', function($scope, $http, $loc
             setTimeout(function(){
                 console.log('routing...');
                 $rootScope.$apply(function() {
-                    $location.path('/review/' + taskId);
+                    $location.path('/review/' + creatorId);
                 });
             }, 1000);
 
@@ -37,7 +37,7 @@ burdenBidderApp.controller('taskHistoryController', function($scope, $http, $loc
         });
     };
 
-    vm.payTask = function(taskId) {
+    vm.payTask = function(taskId, bidderId) {
         var updatedTask = {
             Id: taskId
         };
@@ -52,7 +52,7 @@ burdenBidderApp.controller('taskHistoryController', function($scope, $http, $loc
             setTimeout(function(){
                 console.log('routing...');
                 $rootScope.$apply(function() {
-                    $location.path('/review/' + taskId);
+                    $location.path('/review/' + bidderId);
                 });
             }, 1000);
 

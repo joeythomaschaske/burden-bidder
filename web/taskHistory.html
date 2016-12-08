@@ -747,7 +747,7 @@
                             <b> Category </b> <small>{{task.category}}</small>
                             <button class="btn btn-default btn-lg btn-block" ng-click="vm.contactInformation(task.taskBidderId)" ng-show="{{task.taskBidderId && task.status != 'paid'}}" id="{{task.Id}}"> View Bidder </button>
                             <button class="btn btn-default btn-lg btn-block" ng-click="vm.rejectBidder(task.taskBidderId, task.Id)" ng-show="{{task.taskBidderId && task.status == 'open'}}" id="{{task.Id}}"> Reject Bidder </button>
-                            <button class="btn btn-default btn-lg btn-block" ng-click="vm.payTask(task.Id)" ng-show="{{task.status != 'paid' && task.status != 'open'}}" id="{{task.Id}}"> Pay Bidder </button>
+                            <button class="btn btn-default btn-lg btn-block" ng-click="vm.payTask(task.Id, task.taskBidderId)" ng-show="{{task.status != 'paid' && task.status != 'open'}}" id="{{task.Id}}"> Pay Bidder </button>
                         </div>
                     </div>
                 </div>
@@ -769,7 +769,7 @@
                             <h2> {{task.currentBid}} <small> Current Bid </small></h2>
                             <b> Category </b> <small>{{task.category}}</small>
                             <button class="btn btn-default btn-lg btn-block" ng-click="vm.contactInformation(task.taskCreatorId)" ng-show="{{task.status != 'complete' && task.status != 'paid'}}" id="{{task.Id}}"> Contact Information </button>
-                            <button class="btn btn-default btn-lg btn-block" ng-click="vm.completeTask(task.Id)" ng-show="{{task.status != 'complete' && task.status != 'paid'}}" id="{{task.Id}}"> Complete Task </button>
+                            <button class="btn btn-default btn-lg btn-block" ng-click="vm.completeTask(task.Id, task.taskCreatorId)" ng-show="{{task.status != 'complete' && task.status != 'paid'}}" id="{{task.Id}}"> Complete Task </button>
                         </div>
                 </div>
             </div>
