@@ -15,9 +15,11 @@ burdenBidderApp.controller('reviewController', function($scope, $http, $location
             data : data
         }).then(function(response) {
             alert('Review Created!');
-            $rootScope.$apply(function () {
-                $location.path('/home');
-            });
+            setTimeout(function() {
+                $rootScope.$apply(function () {
+                    $location.path('/home');
+                });
+            }, 500);
         }).catch(function(error){
             console.log(error);
         });
