@@ -727,50 +727,20 @@
                 </header>
             </div>
             <div class="user-dashboard">
-                <h2>Tasks Created</h2>
-                <div ng-repeat="task in vm.userCreatedTasks" class="row list-group-item">
-                    <div ng-if="task.taskCreatorId == vm.userId">
-                        <div class="media col-md-3">
-                            <figure class="pull-left">
-                                <img class="media-object img-rounded img-responsive"  src="data:image/jpeg;base64, {{task.imageUpload}}" alt="placehold.it/350x250" >
-                            </figure>
-                        </div>
-                        <div class="col-md-6">
-                            <h4 class="list-group-item-heading"> {{task.title}} </h4>
-                            <p class="list-group-item-text">
-                                {{task.decription}}
-                            </p>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <h2> {{task.openingPrice}} <small> Asking Price </small></h2>
-                            <h2> {{task.currentBid}} <small> Current Bid </small></h2>
-                            <b> Category </b> <small>{{task.category}}</small>
-                            <button class="btn btn-default btn-lg btn-block" ng-click="vm.contactInformation(task.taskBidderId)" ng-show="{{task.taskBidderId && task.status != 'paid'}}" id="{{task.Id}}"> View Bidder </button>
-                            <button class="btn btn-default btn-lg btn-block" ng-click="vm.rejectBidder(task.taskBidderId, task.Id)" ng-show="{{task.taskBidderId && task.status == 'open'}}" id="{{task.Id}}"> Reject Bidder </button>
-                            <button class="btn btn-default btn-lg btn-block" ng-click="vm.payTask(task.Id)" ng-show="{{task.status != 'paid' && task.status != 'open'}}" id="{{task.Id}}"> Pay Bidder </button>
-                        </div>
+                <div class="form">
+                    <div class="form-group required">
+                        <label required for="title">Title</label>
+                        <input required="required" type="text" class="form-control" id="title" placeholder="Title" ng-model="vm.title">
                     </div>
-                </div>
-                <h2>Tasks Assigned</h2>
-                <div ng-repeat="task in vm.userBiddedTasks" class="row list-group-item">
-                        <div class="media col-md-3">
-                            <figure class="pull-left">
-                                <img class="media-object img-rounded img-responsive"  src="data:image/jpeg;base64, {{task.imageUpload}}" alt="placehold.it/350x250" >
-                            </figure>
-                        </div>
-                        <div class="col-md-6">
-                            <h4 class="list-group-item-heading"> {{task.title}} </h4>
-                            <p class="list-group-item-text">
-                                {{task.decription}}
-                            </p>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <h2> {{task.openingPrice}} <small> Asking Price </small></h2>
-                            <h2> {{task.currentBid}} <small> Current Bid </small></h2>
-                            <b> Category </b> <small>{{task.category}}</small>
-                            <button class="btn btn-default btn-lg btn-block" ng-click="vm.contactInformation(task.taskCreatorId)" ng-show="{{task.status != 'complete' && task.status != 'paid'}}" id="{{task.Id}}"> Contact Information </button>
-                            <button class="btn btn-default btn-lg btn-block" ng-click="vm.completeTask(task.Id)" ng-show="{{task.status != 'complete' && task.status != 'paid'}}" id="{{task.Id}}"> Complete Task </button>
-                        </div>
+                    <div class="form-group">
+                        <label class="required" for="description">Description</label>
+                        <textarea required class="form-control" rows="3" id="description" ng-model="vm.description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="required" for="rating">Rating</label>
+                        <input type="number" required class="form-control" id="rating" ng-model="vm.rating" min="1" max="5"/>
+                    </div>
+                    <button ng-click="vm.createReview()" type="submit" class="btn btn-default">Submit Review</button>
                 </div>
             </div>
         </div>

@@ -857,10 +857,6 @@
                 <div class="preview col-md-6">
                     <div class="preview-pic tab-content">
                         <div class="tab-pane active" id="pic-1"><img class="media-object img-rounded img-responsive" src="data:image/jpeg;base64, {{vm.task.imageUpload}}" /></div>
-                        <figure class="pull-left">
-                            <h3>Time Left To Bid</h3>
-                            <b class="timer">{{vm.task.createdDate | countdown}}</b>
-                        </figure>
                     </div>
                 </div>
                 <div class="details col-md-6">
@@ -877,9 +873,33 @@
                         <marker position="[{{vm.task.lat}}, {{vm.task.long}}]" />
                         <shape name="circle" radius="40" center="[{{vm.task.lat}}, {{vm.task.long}}]" radius="40" />
                         <control name="overviewMap" opened="true" />
-                    </ng-map>`
+                    </ng-map>
+                    <figure class="pull-left">
+                        <h3>Time Left To Bid</h3>
+                        <b class="timer">{{vm.task.createdDate | countdown}}</b>
+                    </figure>
+                </div>
+            </div>
+            <div class="row">
+                <h1>Previous Reviews on this task creator</h1>
+                <h3>Average review: {{vm.averageReview}} / 5</h3>
+                <div class="col-md-12" ng-repeat="review in vm.reviews">
+                    <div class="row">
+                        <div class="col-md-3">
+                            {{review.title}}
+                        </div>
+                        <div class="col-md-6">
+                            {{review.description}}
+                        </div>
+                        <div class="col-md-3">
+                            {{review.rating}} / 5
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        <br/>
+        <br/>
+        <br/>
     </div>
 </div>
