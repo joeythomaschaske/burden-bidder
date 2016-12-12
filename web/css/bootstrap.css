@@ -45,6 +45,18 @@ template {
 a {
   background-color: transparent;
 }
+.backGroundColor{
+  background-color: #778899;
+}
+.headerPadding{
+  padding-top: 0%;
+  width: 100%;
+  height: 2.5%;
+  background-color: black;
+}
+.titleColor{
+  color: #ffffff;
+}
 a:active,
 a:hover {
   outline: 0;
@@ -1428,6 +1440,7 @@ ol ol {
   list-style: none;
 }
 .list-inline {
+  padding-top: 2%;
   padding-left: 0;
   margin-left: -5px;
   list-style: none;
@@ -5252,15 +5265,19 @@ a.thumbnail.active {
   margin-bottom: -1px;
   background-color: #fff;
   border: 1px solid #ddd;
+  border-top-right-radius: 7px;
+  border-top-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  border-bottom-left-radius: 7px;
 }
 .list-group-item:first-child {
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
 }
 .list-group-item:last-child {
   margin-bottom: 0;
-  border-bottom-right-radius: 4px;
-  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 7px;
+  border-bottom-left-radius: 7px;
 }
 a.list-group-item,
 button.list-group-item {
