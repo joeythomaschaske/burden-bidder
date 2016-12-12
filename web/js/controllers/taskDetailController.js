@@ -13,7 +13,7 @@ burdenBidderApp.controller('taskDetailController', function($scope, $routeParams
 
     vm.isCreator = false;
     vm.error = {
-        "notCorrectAmount": true
+        "notCorrectAmount": false
     };
     var inter;
     var startTimer = function(){

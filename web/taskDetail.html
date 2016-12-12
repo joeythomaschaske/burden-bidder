@@ -852,7 +852,7 @@
                             <h4 class="price">Original price: <span>{{vm.task.openingPrice}}</span></h4>
                             <h4 class="price">Current price: <span>{{vm.task.currentBid}}</span></h4>
                             <div class="action"  ng-if="!vm.isCreator">
-                                <div ng-messages="$error" style="color:maroon" role="alert">
+                                <div ng-messages="$error" ng-hide="!vm.error.notCorrectAmount" style="color:maroon" role="alert">
                                     <div when="vm.error.notCorrectAmount">Bid amount must be lower than current bid.</div>
                                 </div>
                                 <label required for="bidAmount">Bid Amount</label>
