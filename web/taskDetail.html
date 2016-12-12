@@ -853,7 +853,7 @@
                             <h4 class="price">Current price: <span>{{vm.task.currentBid}}</span></h4>
                             <div class="action"  ng-if="!vm.isCreator">
                                 <div ng-messages="$error" style="color:maroon" role="alert">
-                                    <div when="vm.isCorrectAmount">Bid amount must be lower than current bid.</div>
+                                    <div when="vm.error.notCorrectAmount">Bid amount must be lower than current bid.</div>
                                 </div>
                                 <label required for="bidAmount">Bid Amount</label>
                                 <input class required="required" id="bidAmount" type="number" placeholder="Enter bid amount" ng-model="vm.bidAmount">
