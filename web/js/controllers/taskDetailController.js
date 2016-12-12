@@ -49,7 +49,8 @@ burdenBidderApp.controller('taskDetailController', function($scope, $routeParams
     };
 
     var taskData = {
-        taskId : $routeParams.Id
+        taskId : $routeParams.Id,
+        taskCreatorId : $routeParams.creator
     };
 
     vm.doBid = function doBid() {
@@ -69,7 +70,7 @@ burdenBidderApp.controller('taskDetailController', function($scope, $routeParams
         }).then(function(response) {
             setTimeout(function(){
                 $rootScope.$apply(function() {
-                    $location.path('/taskDetail/' + taskData.taskId);
+                    $location.path('/taskDetail/' + taskData.taskId + '/' + taskData.taskCreatorId);
                 });
             }, 1000);
         }).catch(function(error){
@@ -102,9 +103,30 @@ burdenBidderApp.controller('taskDetailController', function($scope, $routeParams
     }).then(function(response) {
         vm.user = response.data;
         console.log(response);
-        $rootScope.$apply(function() {
+    }).catch(function(error){
+        console.log(error);
+    });
 
+    var reviewData = {
+        relatedTo : $routeParams.creator
+    };
+    //getting reviews
+    $http({
+        method: 'POST',
+        url: 'http://localHost:8080/getReviews',
+        data : reviewData
+    }).then(function(response) {
+        vm.reviews = $.map(response.data, function(value, index) {
+            return [value];
         });
+        var sum = 0;
+        var amount = 0;
+        for(var i = 0; i < vm.reviews.length; ++i) {
+            sum+= parseInt(vm.reviews[i].rating);
+            amount++;
+        }
+        vm.averageReview = parseInt((sum/amount));
+        console.log(response);
     }).catch(function(error){
         console.log(error);
     });

@@ -713,27 +713,13 @@
                 <header>
                     <div class="col-md-3">
                         <h3>Burden Bidder</h3>
-                        <!-- search
-                        <nav class="navbar-default pull-left">
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvas" data-target="#side-menu" aria-expanded="false">
-                                    <span class="sr-only">Toggle navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                            </div>
-                        </nav>
-                        <div class="search hidden-xs hidden-sm">
-                            <input type="text" placeholder="Search" id="search">
-                        </div>
-                        -->
                     </div>
                     <div class="col-md-9">
                         <div class="header-rightside">
                             <ul class="list-inline form-horizontal">
                                 <li><a href="#/account" class="add-project" data-toggle="modal" data-target="#add_project">My Account</a></li>
                                 <li><a href="#/createTask" class="add-project" data-toggle="modal" data-target="#add_project">Create Task</a></li>
+                                <li><a href="#/taskHistory" class="add-project" data-toggle="modal" data-target="#add_project">View Task History</a></li>
                                 <li><a ng-click="vm.logout()" href class="add-project" data-toggle="modal" data-target="#add_project">Logout</a></li>
                             </ul>
                         </div>
@@ -760,7 +746,7 @@
                     <div class="col-md-3 text-center">
                         <h2> {{task.openingPrice}} <small> Asking Price </small></h2>
                         <h2> {{task.currentBid}} <small> Current Bid </small></h2>
-                        <a class="btn btn-default btn-lg btn-block" ng-href="#/taskDetail/{{task.Id}}"> Bid </a>
+                        <a class="btn btn-default btn-lg btn-block" ng-href="#/taskDetail/{{task.Id}}/{{task.taskCreatorId}}"> Bid </a>
                         <b> Category </b> <small>{{task.category}}</small>
                     </div>
                 </div>

@@ -744,21 +744,6 @@
                 <header>
                     <div class="col-md-7">
                         <h3>Burden Bidder</h3>
-                        <!-- search
-                        <nav class="navbar-default pull-left">
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvas" data-target="#side-menu" aria-expanded="false">
-                                    <span class="sr-only">Toggle navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                            </div>
-                        </nav>
-                        <div class="search hidden-xs hidden-sm">
-                            <input type="text" placeholder="Search" id="search">
-                        </div>
-                        -->
                     </div>
                     <div class="col-md-5">
                         <div class="header-rightside">
@@ -771,14 +756,7 @@
             </div>
             <div class="container">
                 <div class="row">
-                    <!--<div class="col-md-5  toppad  pull-right col-md-offset-3 ">-->
-                        <!--<A href="edit.html" >Edit Profile</A>-->
-
-                        <!--<A href="edit.html" >Logout</A>-->
-                        <!--<br>-->
-                        <!--<p class=" text-info">May 05,2014,03:00 pm </p>-->
-                    <!--</div>-->
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xs-offset-0 col-sm-offset-0 col-md-offset-2 col-lg-offset-2 toppad" >
 
                         <div class="panel panel-info">
                             <div class="panel-heading">
@@ -786,24 +764,17 @@
                             </div>
                             <div class="panel-body">
                                 <div class="row">
-                                    <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive">
-                                        <button ng-click="vm.edit()" type="button" class="btn btn-primary">Edit Account</button>
-                                        <button ng-click="vm.save()" ng-if="vm.editForm" type="button" class="btn btn-primary">Save</button>
+                                    <div class="col-md-5 col-lg-5 " align="center">
+                                        <img src="data:image/jpeg;base64, {{vm.user.picture}}" class="img-circle img-responsive">
+                                        <div>
+                                            <button ng-click="vm.edit()" ng-if="!vm.editForm" style="width: 100%" type="button" class="btn btn-primary">Edit Account</button>
+                                            <button ng-click="vm.save()" ng-if="vm.editForm" style="width: 100%" type="button" class="btn btn-primary">Save</button>
+                                        </div>
+                                        <div>
+                                            <input ng-show="vm.editForm" required id="picture" type="file" id="fileupload" />
+                                        </div>
                                     </div>
-
-                                    <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
-                                      <dl>
-                                        <dt>DEPARTMENT:</dt>
-                                        <dd>Administrator</dd>
-                                        <dt>HIRE DATE</dt>
-                                        <dd>11/12/2013</dd>
-                                        <dt>DATE OF BIRTH</dt>
-                                           <dd>11/12/2013</dd>
-                                        <dt>GENDER</dt>
-                                        <dd>Male</dd>
-                                      </dl>
-                                    </div>-->
-                                    <div class=" col-md-9 col-lg-9 ">
+                                    <div class=" col-md-7 col-lg-7 ">
                                         <table class="table table-user-information">
                                             <tbody>
                                             <tr>
@@ -854,19 +825,10 @@
 
                                             </tbody>
                                         </table>
-                                        <a href="#" class="btn btn-primary">View Tasks Created</a>
-                                        <a href="#" class="btn btn-primary">View Tasks Assigned</a>
+                                        <a href="#/taskHistory" style="align-content: center" class="btn btn-primary">View Task History</a>
                                     </div>
                                 </div>
                             </div>
-                            <!--<div class="panel-footer">-->
-                                <!--<a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>-->
-                                <!--<span class="pull-right">-->
-                                    <!--<a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>-->
-                                    <!--<a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>-->
-                                <!--</span>-->
-                            <!--</div>-->
-
                         </div>
                     </div>
                 </div>

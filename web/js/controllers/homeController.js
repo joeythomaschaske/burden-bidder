@@ -26,6 +26,10 @@ burdenBidderApp.controller('homeController', function($scope, $http, $location, 
                } else {
                    seconds -= 1;
                }
+               if(seconds < 0 && minutes < 0) {
+                   seconds = 0;
+                   minutes = 0;
+               }
 
                if(seconds.toString().length == 1) {
                    seconds = '0' + seconds;

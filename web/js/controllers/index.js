@@ -43,9 +43,17 @@ burdenBidderApp.config(function($routeProvider, $httpProvider) {
     .when('/terms', {
         templateUrl : 'terms.html'
     })
-    .when('/taskDetail/:Id', {
+    .when('/taskDetail/:Id/:creator', {
         templateUrl : 'taskDetail.html',
         controller : 'taskDetailController',
+        controllerAs : 'vm'
+    }).when('/taskHistory',{
+        templateUrl : 'taskHistory.html',
+        controller : 'taskHistoryController',
+        controllerAs : 'vm'
+    }).when('/review/:Id', {
+        templateUrl : 'review.html',
+        controller : 'reviewController',
         controllerAs : 'vm'
     });
 });

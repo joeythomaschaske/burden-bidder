@@ -705,204 +705,75 @@
             width: 100%;
         }
     }
-
-
-    /* Custom CSS*/
-    .card {
-        margin-top: 50px;
-        background: #eee;
-        padding: 3em;
-        line-height: 1.5em; }
-
-    @media screen and (min-width: 997px) {
-        .wrapper {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex; } }
-
-    .details {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-        flex-direction: column; }
-
-    .colors {
-        -webkit-box-flex: 1;
-        -webkit-flex-grow: 1;
-        -ms-flex-positive: 1;
-        flex-grow: 1; }
-
-    .product-title, .price, .sizes, .colors {
-        text-transform: UPPERCASE;
-        font-weight: bold; }
-
-    .checked, .price span {
-        color: #ff9f1a; }
-
-    .product-title, .rating, .product-description, .price, .vote, .sizes {
-        margin-bottom: 15px; }
-
-    .product-title {
-        margin-top: 0; }
-
-    .size {
-        margin-right: 10px; }
-    .size:first-of-type {
-        margin-left: 40px; }
-
-    .color {
-        display: inline-block;
-        vertical-align: middle;
-        margin-right: 10px;
-        height: 2em;
-        width: 2em;
-        border-radius: 2px; }
-    .color:first-of-type {
-        margin-left: 20px; }
-
-    .add-to-cart, .like {
-        background: #ff9f1a;
-        padding: 1.2em 1.5em;
-        border: none;
-        text-transform: UPPERCASE;
-        font-weight: bold;
-        color: #fff;
-        -webkit-transition: background .3s ease;
-        transition: background .3s ease; }
-    .add-to-cart:hover, .like:hover {
-        background: #b36800;
-        color: #fff; }
-
-    .not-available {
-        text-align: center;
-        line-height: 2em; }
-    .not-available:before {
-        font-family: fontawesome;
-        content: "\f00d";
-        color: #fff; }
-
-    .orange {
-        background: #ff9f1a; }
-
-    .green {
-        background: #85ad00; }
-
-    .blue {
-        background: #0076ad; }
-
-    .tooltip-inner {
-        padding: 1.3em; }
-
-    @-webkit-keyframes opacity {
-        0% {
-            opacity: 0;
-            -webkit-transform: scale(3);
-            transform: scale(3); }
-        100% {
-            opacity: 1;
-            -webkit-transform: scale(1);
-            transform: scale(1); } }
-
-    @keyframes opacity {
-        0% {
-            opacity: 0;
-            -webkit-transform: scale(3);
-            transform: scale(3); }
-        100% {
-            opacity: 1;
-            -webkit-transform: scale(1);
-            transform: scale(1); } }
-
 </style>
-<div class="container">
-    <div class="row">
-        <header>
-            <div class="col-md-7">
-                <h3>Burden Bidder</h3>
-                <!-- search
-                <nav class="navbar-default pull-left">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvas" data-target="#side-menu" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    </div>
-                </nav>
-                <div class="search hidden-xs hidden-sm">
-                    <input type="text" placeholder="Search" id="search">
-                </div>
-                -->
-            </div>
-            <div class="col-md-5">
-                <div class="header-rightside">
-                    <ul class="list-inline header-top pull-right">
-                        <li class="hidden-xs"><a href="#/home" class="add-project" data-toggle="modal" data-target="#add_project">Home</a></li>
-                    </ul>
-                </div>
-            </div>
-        </header>
-    </div>
-    <div class="card">
-        <div class="container-fluid">
-            <div></div>
-            <div class="wrapper row">
-                <div class="preview col-md-6">
-                    <div class="preview-pic tab-content">
-                        <div class="tab-pane active" id="pic-1"><img class="media-object img-rounded img-responsive" src="data:image/jpeg;base64, {{vm.task.imageUpload}}" /></div>
-                    </div>
-                </div>
-                <div class="details col-md-6">
-                    <h3 class="product-title">{{vm.task.title}}</h3>
-                    <p class="product-description">{{vm.task.decription}}</p>
-                    <h4 class="price">Original price: <span>{{vm.task.openingPrice}}</span></h4>
-                    <h4 class="price">Current price: <span>{{vm.task.currentBid}}</span></h4>
-                    <div class="action"  ng-if="!vm.isCreator">
-                        <div ng-messages="$error" style="color:maroon" role="alert">
-                            <div when="vm.isCorrectAmount">Bid amount must be lower than current bid.</div>
-                        </div>
-                        <label required for="bidAmount">Bid Amount</label>
-                        <input class required="required" id="bidAmount" type="number" placeholder="Enter bid amount" ng-model="vm.bidAmount">
-                        <button class="add-to-cart btn btn-default" type="button" ng-click="vm.doBid()">Bid</button>
-                    </div>
-                    <ng-map zoom="15" center="[{{vm.task.lat}}, {{vm.task.long}}]">
-                        <marker position="[{{vm.task.lat}}, {{vm.task.long}}]" />
-                        <shape name="circle" radius="40" center="[{{vm.task.lat}}, {{vm.task.long}}]" radius="40" />
-                        <control name="overviewMap" opened="true" />
-                    </ng-map>
-                    <figure class="pull-left">
-                        <h3>Time Left To Bid</h3>
-                        <b class="timer">{{vm.task.createdDate | countdown}}</b>
-                    </figure>
-                </div>
-            </div>
+<div class="container-fluid display-table">
+    <div class="row display-table-row">
+        <div class="col-md-10 col-sm-11 display-table-cell v-align">
             <div class="row">
-                <h1>Previous Reviews on this task creator</h1>
-                <h3>Average review: {{vm.averageReview}} / 5</h3>
-                <div class="col-md-12" ng-repeat="review in vm.reviews">
-                    <div class="row">
-                        <div class="col-md-3">
-                            {{review.title}}
+                <header>
+                    <div class="col-md-3">
+                        <h3>Burden Bidder</h3>
+
+                    </div>
+                    <div class="col-md-9">
+                        <div class="header-rightside">
+                            <ul class="list-inline form-horizontal">
+                                <li class="hidden-xs"><a href="#/home" class="add-project" data-toggle="modal" data-target="#add_project">Home</a></li>
+                                <li><a href="#/taskHistory" class="add-project" data-toggle="modal" data-target="#add_project">View Task History</a></li>
+                                <li><a ng-click="vm.logout()" href class="add-project" data-toggle="modal" data-target="#add_project">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </header>
+            </div>
+            <div class="user-dashboard">
+                <h2>Tasks Created</h2>
+                <div ng-repeat="task in vm.userCreatedTasks" class="row list-group-item">
+                    <div ng-if="task.taskCreatorId == vm.userId">
+                        <div class="media col-md-3">
+                            <figure class="pull-left">
+                                <img class="media-object img-rounded img-responsive"  src="data:image/jpeg;base64, {{task.imageUpload}}" alt="placehold.it/350x250" >
+                            </figure>
                         </div>
                         <div class="col-md-6">
-                            {{review.description}}
+                            <h4 class="list-group-item-heading"> {{task.title}} </h4>
+                            <p class="list-group-item-text">
+                                {{task.decription}}
+                            </p>
                         </div>
-                        <div class="col-md-3">
-                            {{review.rating}} / 5
+                        <div class="col-md-3 text-center">
+                            <h2> {{task.openingPrice}} <small> Asking Price </small></h2>
+                            <h2> {{task.currentBid}} <small> Current Bid </small></h2>
+                            <b> Category </b> <small>{{task.category}}</small>
+                            <button class="btn btn-default btn-lg btn-block" ng-click="vm.contactInformation(task.taskBidderId)" ng-show="{{task.taskBidderId && task.status != 'paid'}}" id="{{task.Id}}"> View Bidder </button>
+                            <button class="btn btn-default btn-lg btn-block" ng-click="vm.rejectBidder(task.taskBidderId, task.Id)" ng-show="{{task.taskBidderId && task.status == 'open'}}" id="{{task.Id}}"> Reject Bidder </button>
+                            <button class="btn btn-default btn-lg btn-block" ng-click="vm.payTask(task.Id, task.taskBidderId)" ng-show="{{task.status != 'paid' && task.status != 'open'}}" id="{{task.Id}}"> Pay Bidder </button>
                         </div>
                     </div>
+                </div>
+                <h2>Tasks Assigned</h2>
+                <div ng-repeat="task in vm.userBiddedTasks" class="row list-group-item">
+                        <div class="media col-md-3">
+                            <figure class="pull-left">
+                                <img class="media-object img-rounded img-responsive"  src="data:image/jpeg;base64, {{task.imageUpload}}" alt="placehold.it/350x250" >
+                            </figure>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="list-group-item-heading"> {{task.title}} </h4>
+                            <p class="list-group-item-text">
+                                {{task.decription}}
+                            </p>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <h2> {{task.openingPrice}} <small> Asking Price </small></h2>
+                            <h2> {{task.currentBid}} <small> Current Bid </small></h2>
+                            <b> Category </b> <small>{{task.category}}</small>
+                            <button class="btn btn-default btn-lg btn-block" ng-click="vm.contactInformation(task.taskCreatorId)" ng-show="{{task.status != 'complete' && task.status != 'paid'}}" id="{{task.Id}}"> Contact Information </button>
+                            <button class="btn btn-default btn-lg btn-block" ng-click="vm.completeTask(task.Id, task.taskCreatorId)" ng-show="{{task.status != 'complete' && task.status != 'paid'}}" id="{{task.Id}}"> Complete Task </button>
+                        </div>
                 </div>
             </div>
         </div>
-        <br/>
-        <br/>
-        <br/>
     </div>
+
 </div>

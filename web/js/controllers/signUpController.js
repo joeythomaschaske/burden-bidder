@@ -117,9 +117,10 @@ burdenBidderApp.controller('signUpController', function($scope, $http, $location
             alert(vm.message);
         });
     }
-
+    //https://burdenbidderbacken.herokuapp.com
     function createAccount() {
         var data = {
+            picture: "https://www.sparklabs.com/forum/styles/comboot/theme/images/default_avatar.jpg",
             firstName : vm.firstName,
             lastName : vm.lastName,
             email : vm.email,
