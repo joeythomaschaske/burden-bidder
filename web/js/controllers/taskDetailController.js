@@ -12,6 +12,9 @@ burdenBidderApp.controller('taskDetailController', function($scope, $routeParams
     });
 
     vm.isCreator = false;
+    vm.error = {
+        "isCorrectAmount": false
+    };
     var inter;
     var startTimer = function(){
         inter = $interval( function () {
@@ -52,7 +55,13 @@ burdenBidderApp.controller('taskDetailController', function($scope, $routeParams
 
     vm.doBid = function doBid() {
         // Updating task. TODO: Only update currentBid field.
-        vm.task.currentBid = vm.task.currentBid - vm.bidAmount;
+        if (task.currentBid <= vm.bidAmount) {
+            vm.isCorrectAmount = false;
+            return;
+        }
+        vm.isCorrectAmount = true;
+
+        vm.task.currentBid = vm.bidAmount;
         vm.task.taskBidderId = userData.userId;
         $http({
             method: 'POST',
